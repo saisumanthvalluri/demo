@@ -1,0 +1,97 @@
+.home-bg {
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    border: 1px solid green;
+    margin-left: 100px;
+    padding: 20px 40px;
+    overflow-y: auto;
+
+    .section-1 {
+        display: flex;
+        flex-direction: column;
+        gap: 30px;
+
+        .filters-box {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+
+            .welcome {
+                font-size: 30px;
+                font-weight: 700;
+                align-self: flex-start;
+
+                span {
+                    color: #fffefe;
+                    font-style: normal;
+                    padding: 5px 10px;
+                    font-weight: 700;
+                    line-height: normal;
+                    border-radius: 20px;
+                    border-radius: var(--Line-height-14-20, 20px);
+                    background: var(--d-9-d-9-d-9, linear-gradient(180deg, #13b0b0 0%, #084a4a 100%));
+                }
+            }
+        }
+
+        .pie-chart {
+            display: flex;
+            flex-direction: column;
+            h3 {
+                align-self: center;
+            }
+        }
+    }
+
+    .section-2 {
+        table {
+            width: 60%;
+            height: 200px;
+            /* border-collapse: collapse; */
+            border: 1px solid #ccc;
+            font-style: 16px;
+            text-align: left;
+
+            tr td:first-child {
+                display: flex;
+                align-items: center;
+                position: relative;
+            }
+
+            td {
+                padding-bottom: 20px;
+            }
+        }
+    }
+}
+
+.avatar-box {
+    display: flex;
+    flex-direction: column;
+    position: relative;
+    /* border: 1px solid green; */
+
+    .dot {
+        content: "";
+        position: absolute;
+
+        width: 8px;
+        height: 8px;
+        border-radius: 100vh;
+        background-color: red;
+        bottom: 5px;
+        right: 0px;
+    }
+}
+
+#Avatar {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    background-color: red;
+    overflow: hidden;
+    border: 2px solid;
+    object-fit: cover;
+    padding: 0;
+}
