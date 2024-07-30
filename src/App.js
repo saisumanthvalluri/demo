@@ -1,13 +1,12 @@
 import "./App.css";
+import MainRouter from "./Router/MainRouter";
 
-import About from "./pages/About";
-
-function App() {
+const App = () => {
     return (
         <div className="App">
-            <About />
+            <MainRouter />
         </div>
     );
-}
+};
 
 export default App;
