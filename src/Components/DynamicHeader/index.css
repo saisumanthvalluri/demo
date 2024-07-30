@@ -64,6 +64,23 @@
         }
     }
 
+    .inner {
+        gap: 15px;
+        li {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+
+            .icon {
+                font-size: 25px;
+            }
+
+            &.active {
+                color: rgba(108, 255, 220, 1);
+            }
+        }
+    }
+
     button {
         width: 100%;
         padding: 10px;
@@ -74,6 +91,22 @@
         color: #000;
         font-size: 16px;
         font-weight: 600;
+        transition: all 0.3s ease-in-out;
+
+        &.otr-btn {
+            background: linear-gradient(90deg, #efefbb 0%, #d4d3dd 100%);
+        }
+
+        &.admit-card-btn {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 8px;
+            gap: 5px;
+            font-size: 14px;
+            border-radius: 100vh;
+            background: linear-gradient(90deg, #1cd8d2 0%, #93edc7 100%);
+        }
     }
 }
 
@@ -110,6 +143,10 @@
                 outline: none;
                 cursor: pointer;
                 background: linear-gradient(90deg, #1cd8d2 0%, #93edc7 100%);
+
+                &:hover {
+                    background: linear-gradient(90deg, #93edc7 0%, #1cd8d2 100%);
+                }
 
                 .icon {
                     font-size: 16px;
@@ -177,11 +214,19 @@
                 font-weight: 600;
                 cursor: pointer;
 
+                &:hover {
+                    background: linear-gradient(90deg, #ffa751 0%, #ffe259 100%);
+                }
+
                 &.otr-btn {
                     background: linear-gradient(90deg, #efefbb 0%, #d4d3dd 100%);
                     border-radius: 5px;
                     width: 55px;
                     font-size: 14px;
+
+                    &:hover {
+                        background: linear-gradient(90deg, #d4d3dd 0%, #efefbb 100%);
+                    }
                 }
             }
 
@@ -341,7 +386,7 @@
     /* extra large screens */
 
     .on-bg {
-        height: 10vh;
+        height: 12vh;
         padding: 0 100px;
 
         .logo-box {

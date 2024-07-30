@@ -81,10 +81,12 @@ const DynamicHeader = ({ type }) => {
                                 <span>Home</span>
                             </li>
                         </Link>
-                        <li>
-                            <NotificationsActiveIcon className="icon" />
-                            <span>Notifications</span>
-                        </li>
+                        <Link to="/notifications">
+                            <li className={activePath === "/notifications" ? "active" : ""}>
+                                <NotificationsActiveIcon className="icon" />
+                                <span>Notifications</span>
+                            </li>
+                        </Link>
                         <li>
                             <RocketLaunchIcon className="icon" />
                             <span>Tracking</span>
@@ -109,7 +111,12 @@ const DynamicHeader = ({ type }) => {
                 {type === "inner" && <AccountCircleOutlinedIcon className="account-icon" />}
             </div>
             <MenuIcon className="hb-menu" onClick={() => setOpen(true)} />
-            <TemporaryDrawer toggleDrawer={toggleDrawer} open={open} />
+            <TemporaryDrawer
+                toggleDrawer={toggleDrawer}
+                open={open}
+                handleNavigateToLogin={handleNavigateToLogin}
+                type={type}
+            />
         </div>
     );
 };
