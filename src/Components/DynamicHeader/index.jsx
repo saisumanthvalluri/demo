@@ -3,13 +3,13 @@ import { useNavigate, useLocation, Link } from "react-router-dom";
 import KeyboardArrowDownIcon from "@mui/icons-material/KeyboardArrowDown";
 import MenuIcon from "@mui/icons-material/Menu";
 import FileDownloadIcon from "@mui/icons-material/FileDownload";
-import HomeIcon from "@mui/icons-material/Home";
 import NotificationsActiveIcon from "@mui/icons-material/NotificationsActive";
 import RocketLaunchIcon from "@mui/icons-material/RocketLaunch";
 import DateRangeIcon from "@mui/icons-material/DateRange";
 import AccountCircleOutlinedIcon from "@mui/icons-material/AccountCircleOutlined";
+import WorkOutlinedIcon from "@mui/icons-material/WorkOutlined";
 import "./index.css";
-import TemporaryDrawer from "../Drawer";
+import MobileDrawer from "../Drawer";
 
 const DynamicHeader = ({ type }) => {
     const location = useLocation();
@@ -18,36 +18,33 @@ const DynamicHeader = ({ type }) => {
 
     const activePath = location.pathname;
 
-    useEffect(() => {
-        const handleHashChange = () => {
-            const hash = window.location.hash;
-            if (hash) {
-                const targetElement = document.querySelector(hash);
-                if (targetElement) {
-                    targetElement.scrollIntoView({ behavior: "smooth", block: "start", inline: "nearest" });
-                }
-            }
-        };
+    // useEffect(() => {
+    //     const handleHashChange = () => {
+    //         const hash = window.location.hash;
+    //         if (hash) {
+    //             const targetElement = document.querySelector(hash);
+    //             if (targetElement) {
+    //                 targetElement.scrollIntoView({ behavior: "smooth", block: "start" });
+    //             }
+    //         }
+    //     };
 
-        // Initial check on component mount
-        handleHashChange();
+    //     // Initial check on component mount
+    //     handleHashChange();
 
-        // Add event listeners for window resize and hash change
-        window.addEventListener("hashchange", handleHashChange);
+    //     // Add event listener for hash change
+    //     window.addEventListener("hashchange", handleHashChange);
 
-        // Clean up the event listeners on component unmount
-        return () => {
-            window.removeEventListener("hashchange", handleHashChange);
-        };
-    }, []);
-
-    const handleNavigateToLogin = () => {
-        navigate("/auth");
-    };
+    //     // Clean up the event listener on component unmount
+    //     return () => {
+    //         window.removeEventListener("hashchange", handleHashChange);
+    //     };
+    // }, []);
 
     const toggleDrawer = (newOpen) => () => {
         setOpen(newOpen);
     };
+
     return (
         <div className="on-bg">
             <div className="logo-box">
@@ -77,14 +74,14 @@ const DynamicHeader = ({ type }) => {
                     <ul className="inner">
                         <Link to="/jobs">
                             <li className={activePath === "/jobs" ? "active" : ""}>
-                                <HomeIcon className="icon" />
-                                <span>Home</span>
+                                <WorkOutlinedIcon className="icon" />
+                                <span>Jobs</span>
                             </li>
                         </Link>
-                        <Link to="/notifications">
-                            <li className={activePath === "/notifications" ? "active" : ""}>
+                        <Link to="/alerts">
+                            <li className={activePath === "/alerts" ? "active" : ""}>
                                 <NotificationsActiveIcon className="icon" />
-                                <span>Notifications</span>
+                                <span>Alerts</span>
                             </li>
                         </Link>
                         <li>
@@ -99,8 +96,12 @@ const DynamicHeader = ({ type }) => {
                     </ul>
                 )}
 
-                {type === "outer" && <button onClick={handleNavigateToLogin}>Login</button>}
-                {type === "inner" && <button className="otr-btn">OTR</button>}
+                {type === "outer" && <button onClick={() => navigate("/auth")}>Login</button>}
+                {type === "inner" && (
+                    <button className="otr-btn" onClick={() => navigate("/otr")}>
+                        OTR
+                    </button>
+                )}
                 {type === "outer" && (
                     <>
                         <img src="/auth/india.svg" alt="india" />
@@ -108,15 +109,15 @@ const DynamicHeader = ({ type }) => {
                     </>
                 )}
 
-                {type === "inner" && <AccountCircleOutlinedIcon className="account-icon" />}
+                {type === "inner" && (
+                    <AccountCircleOutlinedIcon
+                        className={activePath === "/my-account" ? "active account-icon" : "account-icon"}
+                        onClick={() => navigate("/my-account")}
+                    />
+                )}
             </div>
             <MenuIcon className="hb-menu" onClick={() => setOpen(true)} />
-            <TemporaryDrawer
-                toggleDrawer={toggleDrawer}
-                open={open}
-                handleNavigateToLogin={handleNavigateToLogin}
-                type={type}
-            />
+            <MobileDrawer toggleDrawer={toggleDrawer} open={open} type={type} />
         </div>
     );
 };

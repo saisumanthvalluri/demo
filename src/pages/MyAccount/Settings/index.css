@@ -1,0 +1,57 @@
+.settings-bg {
+    padding: 10px;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+
+    .nav-tabs {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        margin-bottom: 20px;
+
+        button {
+            background-color: #cecece;
+            border: none;
+            outline: none;
+            font-size: 12px;
+            font-weight: 600;
+            padding: 5px 10px;
+            border-radius: 100vh;
+            cursor: pointer;
+
+            &.active {
+                color: #fff;
+                background-color: rgba(27, 9, 227, 1);
+            }
+        }
+    }
+
+    .address-box {
+        align-self: center;
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+        width: 100%;
+
+        h3 {
+            font-size: 14px;
+            color: rgba(0, 12, 64, 1);
+            font-weight: 500;
+            align-self: center;
+        }
+    }
+
+    .save-btn {
+        background-color: rgba(27, 9, 227, 1);
+        border: none;
+        outline: none;
+        font-size: 14px;
+        font-weight: 600;
+        padding: 7px 15px;
+        border-radius: 100vh;
+        cursor: pointer;
+        color: #fff;
+        align-self: center;
+    }
+}

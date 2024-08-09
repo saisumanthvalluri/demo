@@ -1,0 +1,155 @@
+.otr-bg {
+    height: calc(100vh - 8vh);
+    overflow-y: auto;
+
+    .inner-body {
+        min-height: 100vh;
+        padding: 10px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+
+        h2 {
+            font-size: 14px;
+            font-weight: 500;
+        }
+
+        .note {
+            font-size: 8px;
+            color: #000;
+            margin-top: 10px;
+            padding: 10px;
+            background-color: #f5f5f5;
+            border-radius: 5px;
+            line-height: 12px;
+
+            span {
+                color: rgb(218, 81, 81);
+                font-size: 10px;
+                font-weight: 500;
+            }
+        }
+
+        h4 {
+            font-size: 14px;
+            font-weight: 500;
+            /* color: ; */
+            margin-top: 10px;
+        }
+
+        hr {
+            margin-top: 10px;
+            margin-bottom: 10px;
+            border: none;
+            border-top: 1px solid #ccc;
+            width: 100%;
+        }
+    }
+}
+
+@media (min-width: 576px) {
+    /* large mobiles */
+
+    .otr-bg {
+        .inner-body {
+            padding: 15px 15%;
+        }
+    }
+}
+
+@media (min-width: 768px) {
+    /* tablets */
+
+    .otr-bg {
+        height: calc(100vh - 10vh);
+
+        .inner-body {
+            h2 {
+                font-size: 14px;
+            }
+
+            .note {
+                font-size: 10px;
+                padding: 13px;
+                line-height: 16px;
+
+                span {
+                    color: rgb(218, 81, 81);
+                    font-size: 10px;
+                    font-weight: 500;
+                }
+            }
+
+            h4 {
+                font-size: 14px;
+                margin-top: 15px;
+            }
+        }
+    }
+}
+
+@media (min-width: 992px) {
+    /* laptops */
+
+    .otr-bg {
+        height: calc(100vh - 12vh);
+    }
+}
+
+@media (min-width: 1200px) {
+    /* desktops */
+
+    .otr-bg {
+        .inner-body {
+            min-height: 190vh;
+            h2 {
+                font-size: 14px;
+            }
+
+            .note {
+                font-size: 10px;
+                padding: 13px;
+                line-height: 16px;
+
+                span {
+                    color: rgb(218, 81, 81);
+                    font-size: 10px;
+                    font-weight: 500;
+                }
+            }
+
+            h4 {
+                font-size: 14px;
+                margin-top: 15px;
+            }
+        }
+    }
+}
+
+@media (min-width: 1400px) {
+    /* extra large screens */
+
+    .otr-bg {
+        .inner-body {
+            padding-inline: 40vh;
+            min-height: 130vh;
+            h2 {
+                font-size: 16px;
+            }
+
+            .note {
+                font-size: 14px;
+                line-height: 20px;
+
+                span {
+                    font-size: 15px;
+                }
+            }
+
+            h4 {
+                font-size: 16px;
+                margin-top: 20px;
+            }
+        }
+    }
+}

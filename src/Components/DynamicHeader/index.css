@@ -245,6 +245,10 @@
                 font-size: 30px;
                 cursor: pointer;
                 color: #fff;
+
+                &.active {
+                    color: rgba(108, 255, 220, 1);
+                }
             }
         }
 

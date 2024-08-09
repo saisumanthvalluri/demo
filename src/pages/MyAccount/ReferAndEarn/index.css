@@ -1,0 +1,332 @@
+.rae-bg {
+    padding: 10px;
+
+    .banner {
+        background: linear-gradient(90deg, #fbed96 0%, #abecd6 100%);
+        display: grid;
+        place-items: center;
+        padding: 20px 0;
+
+        img {
+            width: 100%;
+            max-width: 700px;
+        }
+    }
+
+    .sign-up-banner,
+    .first-apply-banner {
+        position: relative;
+        background-color: #e7e7e7;
+        padding-top: 50px;
+        padding-bottom: 10px;
+        padding: 45px 5px 10px 5px;
+
+        .step-title {
+            position: absolute;
+            top: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            padding-inline: 10px;
+            padding-block: 5px 5px;
+            background-color: #fff;
+            border-radius: 0 0 10px 10px;
+            text-align: center;
+
+            span {
+                font-size: 12px;
+                font-weight: 500;
+                line-height: 16px;
+            }
+        }
+
+        .avt-earn-amt-box {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+
+            .item {
+                display: flex;
+                align-items: center;
+
+                &:last-child {
+                    flex-direction: row-reverse;
+                }
+
+                img {
+                    width: 40%;
+                }
+
+                .amt-box {
+                    display: flex;
+                    flex-direction: column;
+
+                    span {
+                        font-size: 14px;
+                        font-weight: 500;
+                    }
+                }
+            }
+        }
+
+        .item {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+
+            img {
+                width: 20%;
+            }
+
+            span {
+                font-size: 14px;
+                font-weight: 500;
+            }
+        }
+    }
+
+    .first-apply-banner {
+        margin-top: 20px;
+    }
+
+    .see-who-btn {
+        border-radius: 10px;
+        background: linear-gradient(90deg, #00f5a0 0%, #00d9f5 100%);
+        outline: none;
+        border: none;
+        width: 100%;
+        padding-block: 10px;
+        font-size: 14px;
+        font-weight: 500;
+        margin-block-start: 20px;
+    }
+
+    .ref-via-box {
+        margin-block: 20px;
+        display: grid;
+        place-items: center;
+        gap: 10px;
+
+        ul {
+            list-style-type: none;
+            padding-left: 0;
+            padding: 15px;
+            border-radius: 10px;
+            background: linear-gradient(90deg, #50c9c3 0%, #96deda 100%);
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            width: 100%;
+
+            li {
+                display: grid;
+                place-items: center;
+                gap: 5px;
+                cursor: pointer;
+
+                img {
+                    width: 30px;
+                    max-width: 70px;
+                    height: auto;
+                    transition: all 0.2s ease-in-out;
+
+                    &:hover {
+                        transform: scale(1.1);
+                    }
+                }
+
+                span {
+                    font-size: 12px;
+                    font-weight: 500;
+                    text-align: center;
+                }
+            }
+        }
+    }
+
+    .ref-code-box {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        border: 0.5px solid #ccc;
+        border-radius: 5px;
+        padding: 10px;
+
+        span {
+            font-size: 14px;
+            font-weight: 500;
+        }
+
+        div {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 10px;
+            font-size: 20px;
+
+            * {
+                cursor: pointer;
+            }
+        }
+    }
+}
+
+@media (min-width: 576px) {
+    /* large mobiles */
+}
+
+@media (min-width: 768px) {
+    /* tablets */
+    .rae-bg {
+        padding: 0 10px;
+
+        .banner {
+            padding: 30px 0;
+
+            img {
+                width: 60%;
+            }
+        }
+
+        .sign-up-banner,
+        .first-apply-banner {
+            padding-bottom: 10px;
+            padding: 45px 15px 15px 15px;
+
+            .step-title {
+                span {
+                    font-size: 15px;
+                    line-height: 20px;
+                }
+            }
+
+            .avt-earn-amt-box {
+                display: grid;
+                grid-template-columns: repeat(2, 1fr);
+
+                .item {
+                    display: flex;
+                    align-items: center;
+
+                    &:last-child {
+                        flex-direction: row-reverse;
+                    }
+
+                    img {
+                        width: 30%;
+                    }
+
+                    .amt-box {
+                        span {
+                            font-size: 16px;
+                        }
+                    }
+                }
+            }
+
+            .item {
+                gap: 15px;
+
+                img {
+                    width: 15%;
+                }
+
+                span {
+                    font-size: 16px;
+                }
+            }
+        }
+
+        .first-apply-banner {
+            margin-top: 25px;
+        }
+
+        .see-who-btn {
+            padding-block: 15px;
+            font-weight: 600;
+            margin-block-start: 25px;
+        }
+
+        .ref-via-box {
+            width: 70%;
+            margin-inline: auto;
+            margin-block: 25px;
+        }
+
+        .ref-code-box {
+            width: 70%;
+            margin-inline: auto;
+        }
+    }
+}
+
+@media (min-width: 992px) {
+    /* laptops */
+    .rae-bg {
+        padding: 0 15px;
+
+        .banner {
+            padding: 30px 0;
+
+            img {
+                width: 50%;
+            }
+        }
+
+        .sign-up-banner,
+        .first-apply-banner {
+            padding-bottom: 15px;
+            padding: 45px 30px 15px 30px;
+
+            .avt-earn-amt-box {
+                .item {
+                    &:last-child {
+                        flex-direction: row-reverse;
+                    }
+                }
+            }
+        }
+    }
+}
+
+@media (min-width: 1200px) {
+    /* desktops */
+
+    .rae-bg {
+        padding: 0 15px;
+
+        .banner {
+            padding: 30px 0;
+
+            img {
+                width: 45%;
+            }
+        }
+
+        .sign-up-banner,
+        .first-apply-banner {
+            padding-bottom: 15px;
+            padding: 45px 30px 15px 30px;
+
+            .avt-earn-amt-box {
+                .item {
+                    &:last-child {
+                        flex-direction: row-reverse;
+                    }
+                }
+            }
+        }
+        .see-who-btn {
+            margin-block-start: 30px;
+        }
+
+        .ref-via-box {
+            width: 60%;
+            margin-block: 30px;
+        }
+
+        .ref-code-box {
+            width: 60%;
+        }
+    }
+}
+
+@media (min-width: 1400px) {
+    /* extra large screens */
+}

@@ -1,5 +1,5 @@
-import React from "react";
-import { Link } from "react-router-dom";
+import React, { useState } from "react";
+import { Link, useNavigate } from "react-router-dom";
 import { Pagination } from "@mui/material";
 import Accordion from "@mui/material/Accordion";
 import AccordionSummary from "@mui/material/AccordionSummary";
@@ -10,194 +10,11 @@ import DynamicHeader from "../../Components/DynamicHeader";
 import BasicCarousel from "../../Components/Carousel";
 import "./index.css";
 import Footer from "../../Components/Footer";
-
-const notifications = [
-    {
-        category: "SSC NOTIFICATIONS",
-        items: [
-            {
-                id: 1,
-                new: true,
-                date: "May 20th, 2024",
-                desc: `SSA/ UDC Grade Limited Departmental Competitive
-        Examination, 2023 & 2024: Uploading of Tentative 
-        Answer Key(s) along with Candidates' Response Sheet(s).`,
-            },
-            {
-                id: 2,
-                new: true,
-                date: "May 20th, 2024",
-                desc: `SSA/ UDC Grade Limited Departmental Competitive
-        Examination, 2023 & 2024: Uploading of Tentative 
-        Answer Key(s) along with Candidates' Response Sheet(s).`,
-            },
-            {
-                id: 3,
-                new: false,
-                date: "May 20th, 2024",
-                desc: `SSA/ UDC Grade Limited Departmental Competitive
-        Examination, 2023 & 2024: Uploading of Tentative 
-        Answer Key(s) along with Candidates' Response Sheet(s).`,
-            },
-        ],
-    },
-    {
-        category: "UPSC NOTIFICATIONS",
-        items: [
-            {
-                id: 1,
-                new: true,
-                date: "May 20th, 2024",
-                desc: `SSA/ UDC Grade Limited Departmental Competitive
-        Examination, 2023 & 2024: Uploading of Tentative 
-        Answer Key(s) along with Candidates' Response Sheet(s).`,
-            },
-            {
-                id: 2,
-                new: true,
-                date: "May 20th, 2024",
-                desc: `SSA/ UDC Grade Limited Departmental Competitive
-        Examination, 2023 & 2024: Uploading of Tentative 
-        Answer Key(s) along with Candidates' Response Sheet(s).`,
-            },
-            {
-                id: 3,
-                new: false,
-                date: "May 20th, 2024",
-                desc: `SSA/ UDC Grade Limited Departmental Competitive
-        Examination, 2023 & 2024: Uploading of Tentative 
-        Answer Key(s) along with Candidates' Response Sheet(s).`,
-            },
-        ],
-    },
-    {
-        category: "BANK NOTIFICATIONS",
-        items: [
-            {
-                id: 1,
-                new: true,
-                date: "May 20th, 2024",
-                desc: `SSA/ UDC Grade Limited Departmental Competitive
-        Examination, 2023 & 2024: Uploading of Tentative 
-        Answer Key(s) along with Candidates' Response Sheet(s).`,
-            },
-            {
-                id: 2,
-                new: true,
-                date: "May 20th, 2024",
-                desc: `SSA/ UDC Grade Limited Departmental Competitive
-        Examination, 2023 & 2024: Uploading of Tentative 
-        Answer Key(s) along with Candidates' Response Sheet(s).`,
-            },
-            {
-                id: 3,
-                new: false,
-                date: "May 20th, 2024",
-                desc: `SSA/ UDC Grade Limited Departmental Competitive
-        Examination, 2023 & 2024: Uploading of Tentative 
-        Answer Key(s) along with Candidates' Response Sheet(s).`,
-            },
-        ],
-    },
-];
-
-const faqs = [
-    {
-        question: "1.What government positions are most frequently sought after in India?",
-        answer: "The most common government jobs in India are that of an army officer, navy officer, air force officer, clerk and probationary officer.",
-    },
-    {
-        question: "2.What is UPSC?",
-        answer: "UPSC is an Indian national examination conducted by the Union Public Service Commission (UPSC) in India. It covers 35 subjects, including English, Mathematics, Physics, Chemistry, Biology, Computer Science, History, Geography, Physical Education, Civics, Social Studies, Languages, Art, Science, and Humanities.",
-    },
-    {
-        question: "3.What is BANK POWER?",
-        answer: "Bank Power is a combination of Banking, In",
-    },
-    {
-        question: "4. What is the role of a bank in India?",
-        answer: "Banks play a crucial role in India by providing financial services, including banking, insurance, and loans. They facilitate transactions, handle deposits, and manage assets and liabilities.",
-    },
-    {
-        question: "5. What is the role of a clerk in India?",
-        answer: "Clerks are employees of a government department or agency that perform tasks such as collecting and processing official documents, filling in forms, and maintaining records.",
-    },
-];
-
-const collaborators = [
-    {
-        id: 1,
-        img: "/landingPage/collaborators/insu_exam.svg",
-        alt: "insu_exam",
-        name: "INSURRANCE EXAM PODCAST",
-        url: "https://www.insuexam.gov.in/",
-    },
-    {
-        id: 2,
-        img: "/landingPage/collaborators/digilocaker.svg",
-        alt: "Digilocaker",
-        name: "DIGILOCKER",
-        url: "https://www.digilocaker.com/",
-    },
-    {
-        id: 3,
-        img: "/landingPage/collaborators/ncs.svg",
-        alt: "NCS",
-        name: "Natiocal Career Service",
-        url: "https://www.ncs.com/",
-    },
-    {
-        id: 4,
-        img: "/landingPage/collaborators/sbi.svg",
-        alt: "SBI",
-        name: "SBI",
-        url: "https://www.sbi.com/",
-    },
-    {
-        id: 5,
-        img: "/landingPage/collaborators/ssc.svg",
-        alt: "SSC",
-        name: "SSC",
-        url: "https://www.ssc.com/",
-    },
-    {
-        id: 6,
-        img: "/landingPage/collaborators/indian_railway.svg",
-        alt: "indian_railway",
-        name: "Indian Railway",
-        url: "https://www.indianrailways.com/",
-    },
-    {
-        id: 7,
-        img: "/landingPage/collaborators/upsc.svg",
-        alt: "UPSC",
-        name: "UPSC",
-        url: "https://www.upsc.com/",
-    },
-    {
-        id: 8,
-        img: "/landingPage/collaborators/ibps.svg",
-        alt: "IBPS",
-        name: "IBPS",
-        url: "https://www.ibps.com/",
-    },
-    {
-        id: 9,
-        img: "/landingPage/collaborators/gap.svg",
-        alt: "Gov. of AP",
-        name: "Govt. Of AP",
-        url: "https://www.govofap.com/",
-    },
-    {
-        id: 10,
-        img: "/landingPage/collaborators/dp.svg",
-        alt: "Delhi Police",
-        name: "Delhi Police",
-        url: "https://www.delhipolice.com/",
-    },
-];
+import { collaborators, faqs, jobNotifications, statesWithAddress } from "../../Config/constants";
 
 const LandingPage = () => {
+    const navigate = useNavigate();
+    const [activeStateId, setActiveStateId] = useState(0);
     // NotificationItem Component
     const NotificationItem = ({ item }) => (
         <div className="notification-item">
@@ -206,7 +23,9 @@ const LandingPage = () => {
                 <span className="date">{item.date}</span>
             </div>
             <p className="desc">{item.desc}</p>
-            <button className="view-button">view</button>
+            <button className="view-button" onClick={() => navigate("/auth")}>
+                view
+            </button>
         </div>
     );
 
@@ -233,7 +52,7 @@ const LandingPage = () => {
                 <Link className="view-all">View All</Link>
             </div>
             <div className="all-cate-list">
-                {notifications.map((notification) => (
+                {jobNotifications.map((notification) => (
                     <NotificationCategory
                         key={notification.category}
                         category={notification.category}
@@ -296,7 +115,7 @@ const LandingPage = () => {
                         </div>
                     </div>
                     <div className="future-goals">
-                        <img src="/landingPage/vision_mission.svg" alt="future-goals" className="future-goals-img" />
+                        <img src="/landingPage/future-goals.svg" alt="future-goals" className="future-goals-img" />
                         <h3>Future Goals</h3>
                         <span>Maawaabro IT Solutions Pvt Ltd aims to:</span>
                         <ul>
@@ -325,7 +144,7 @@ const LandingPage = () => {
                     </div>
                     <ul className="faq-list">
                         {faqs.map((e) => (
-                            <Accordion>
+                            <Accordion key={e.question}>
                                 <AccordionSummary
                                     expandIcon={<ArrowDropDownIcon />}
                                     aria-controls="panel2-content"
@@ -354,6 +173,48 @@ const LandingPage = () => {
                         <img src="/landingPage/section_tag_after.svg" alt="border" />
                     </div>
                     <img src="/landingPage/contact-us-banner.svg" alt="contact us" />
+
+                    <ul className="states-box">
+                        {statesWithAddress.map((state, index) => (
+                            <li
+                                key={state.name}
+                                className={index === activeStateId ? "active" : ""}
+                                onClick={() => setActiveStateId(index)}>
+                                {state.name}
+                            </li>
+                        ))}
+                    </ul>
+                    <div className="address-box">
+                        <div className="table-box">
+                            <table>
+                                <thead>
+                                    <tr>
+                                        <th>Branch Name</th>
+                                        <th>Phone Number</th>
+                                        <th>Email ID</th>
+                                        <th>Address</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td>{statesWithAddress[activeStateId].address.branchName}</td>
+                                        <td>
+                                            {statesWithAddress[activeStateId].address.phone.map((e) => (
+                                                <p>{e}</p>
+                                            ))}
+                                        </td>
+                                        <td>{statesWithAddress[activeStateId].address.email}</td>
+                                        <td>{statesWithAddress[activeStateId].address.address}</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                    <div className="pernt-add-box">
+                        <p>
+                            Permanent Address : - 11-41,Radham Bazar, Kanagala, Cherukupalli,Guntur,AP, India - 522259.
+                        </p>
+                    </div>
                 </div>
                 <Footer />
             </div>

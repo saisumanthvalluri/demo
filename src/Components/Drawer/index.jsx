@@ -1,16 +1,17 @@
 import * as React from "react";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import Drawer from "@mui/material/Drawer";
 import NotificationsActiveIcon from "@mui/icons-material/NotificationsActive";
-import HomeIcon from "@mui/icons-material/Home";
 import FileDownloadIcon from "@mui/icons-material/FileDownload";
 import RocketLaunchIcon from "@mui/icons-material/RocketLaunch";
 import DateRangeIcon from "@mui/icons-material/DateRange";
 import AccountCircleOutlinedIcon from "@mui/icons-material/AccountCircleOutlined";
+import WorkOutlinedIcon from "@mui/icons-material/WorkOutlined";
 import { Divider } from "@mui/material";
-import { Link, useLocation } from "react-router-dom";
 
-export default function TemporaryDrawer({ open, toggleDrawer, handleNavigateToLogin, type }) {
+const MobileDrawer = ({ open, toggleDrawer, type }) => {
     const location = useLocation();
+    const navigate = useNavigate();
     const activePath = location.pathname;
     return (
         <Drawer anchor="right" open={open} onClose={toggleDrawer(false)}>
@@ -38,14 +39,14 @@ export default function TemporaryDrawer({ open, toggleDrawer, handleNavigateToLo
                     <ul className="inner">
                         <Link to="/jobs">
                             <li className={activePath === "/jobs" ? "active" : ""}>
-                                <HomeIcon className="icon" />
-                                <span>Home</span>
+                                <WorkOutlinedIcon className="icon" />
+                                <span>Jobs</span>
                             </li>
                         </Link>
-                        <Link to="/notifications">
-                            <li className={activePath === "/notifications" ? "active" : ""}>
+                        <Link to="/alerts">
+                            <li className={activePath === "/alerts" ? "active" : ""}>
                                 <NotificationsActiveIcon className="icon" />
-                                <span>Notifications</span>
+                                <span>Alerts</span>
                             </li>
                         </Link>
                         <li>
@@ -60,15 +61,23 @@ export default function TemporaryDrawer({ open, toggleDrawer, handleNavigateToLo
                 )}
                 <Divider color="#fff" />
                 <ul className="inner">
-                    <li>
+                    <li
+                        onClick={() => navigate("/my-account")}
+                        className={activePath === "/my-account" ? "active" : ""}>
                         <AccountCircleOutlinedIcon />
                         <span>My Account</span>
                     </li>
                 </ul>
                 <Divider color="#fff" />
-                {type === "outer" && <button onClick={handleNavigateToLogin}>Login</button>}
-                {type === "inner" && <button className="otr-btn">OTR</button>}
+                {type === "outer" && <button onClick={() => navigate("/auth")}>Login</button>}
+                {type === "inner" && (
+                    <button onClick={() => navigate("/otr")} className="otr-btn">
+                        OTR
+                    </button>
+                )}
             </div>
         </Drawer>
     );
-}
+};
+
+export default MobileDrawer;

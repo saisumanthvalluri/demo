@@ -1,0 +1,390 @@
+.wallet-bg {
+    padding: 10px;
+
+    /* .back-btn {
+        border: none;
+        outline: none;
+        display: flex;
+        align-items: center;
+        background-color: transparent;
+        margin-bottom: 20px;
+        font-size: 14px;
+        font-weight: 600;
+        cursor: pointer;
+    } */
+
+    .top {
+        width: 100%;
+        position: relative;
+        margin-bottom: 40px;
+        /* image-rendering: optimizeQuality; */
+
+        .balance-withdraw {
+            width: 100%;
+            position: absolute;
+            top: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 0 20px;
+
+            p {
+                color: #fff;
+                font-size: 16px;
+                font-weight: 500;
+            }
+
+            button {
+                background-color: #baf2f6;
+                color: #000;
+                font-size: 14px;
+                padding: 5px 10px;
+                border: none;
+                outline: none;
+                cursor: pointer;
+                border-radius: 5px;
+                font-weight: 700;
+            }
+        }
+
+        img {
+            z-index: -1;
+            width: 100%;
+            height: auto;
+        }
+
+        .wallet-apt {
+            position: absolute;
+            bottom: -20px;
+            width: 100%;
+            margin: 0;
+            padding: 0;
+            list-style-type: none;
+            display: flex;
+            align-items: center;
+            justify-content: space-around;
+            padding: 0 20px;
+
+            li {
+                background-image: linear-gradient(to right, rgba(67, 206, 162, 1), rgba(24, 90, 157, 1));
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                justify-content: center;
+                gap: 5px;
+                color: #fff;
+                padding: 0 10px;
+                border-radius: 10px;
+                width: 60px;
+                height: 60px;
+                cursor: pointer;
+                border: 1px solid #ccc;
+
+                .icon {
+                    font-size: 20px;
+                    flex-shrink: 0;
+                }
+
+                span {
+                    text-wrap: wrap;
+                    font-size: 10px;
+                    font-weight: 400;
+                    text-align: center;
+                }
+            }
+        }
+    }
+
+    .sec-title {
+        font-size: 16px;
+        font-weight: 600;
+    }
+
+    .wallet-services {
+        display: flex;
+        justify-content: space-around;
+        border: 0.5px solid #ccc;
+        margin: 20px 0;
+        padding: 10px 0;
+        border-radius: 8px;
+        flex-wrap: wrap;
+        gap: 15px;
+
+        li {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 5px;
+            width: 60px;
+
+            div {
+                background-color: #f4f4f4;
+                display: grid;
+                place-items: center;
+                width: 50px;
+                height: 50px;
+                border-radius: 5px;
+                filter: drop-shadow(0px 1px 1px rgba(0, 0, 0, 0.25));
+
+                .icon {
+                    font-size: 20px;
+                    flex-shrink: 0;
+                }
+            }
+
+            span {
+                font-size: 10px;
+                font-weight: 600;
+                text-align: center;
+            }
+        }
+    }
+
+    .transactions {
+        width: 100%;
+        height: 100px;
+        border: 0.5px solid #ccc;
+        margin: 20px 0;
+        border-radius: 8px;
+        display: grid;
+        place-items: center;
+    }
+}
+
+@media (min-width: 576px) {
+    /* large mobiles */
+}
+
+@media (min-width: 768px) {
+    /* tablets */
+    .wallet-bg {
+        padding: 0 10px;
+
+        .top {
+            margin-bottom: 45px;
+
+            .balance-withdraw {
+                top: 20px;
+                padding: 0 30px;
+
+                button {
+                    padding: 7px 12px;
+                }
+            }
+
+            .wallet-apt {
+                bottom: -25px;
+                padding: 0 30px;
+
+                li {
+                    width: 70px;
+                    height: 70px;
+                    cursor: pointer;
+                    border: 1px solid #ccc;
+
+                    .icon {
+                        font-size: 23px;
+                    }
+
+                    span {
+                        font-size: 12px;
+                        font-weight: 500;
+                    }
+                }
+            }
+        }
+
+        .sec-title {
+            font-size: 18px;
+            font-weight: 700;
+        }
+
+        .wallet-services {
+            padding: 15px 0;
+            border-radius: 10px;
+            gap: 20px;
+
+            li {
+                gap: 8px;
+                width: 65px;
+                cursor: pointer;
+
+                div {
+                    background-color: #f4f4f4;
+                    width: 55px;
+                    height: 55px;
+                    border-radius: 8px;
+
+                    .icon {
+                        font-size: 23px;
+                    }
+                }
+
+                span {
+                    font-size: 12px;
+                }
+            }
+        }
+    }
+}
+
+@media (min-width: 992px) {
+    /* laptops */
+    .wallet-bg {
+        padding: 0 10px;
+
+        .top {
+            margin-bottom: 50px;
+
+            .balance-withdraw {
+                top: 30px;
+                padding: 0 35px;
+
+                p {
+                    font-size: 18px;
+                }
+
+                button {
+                    font-size: 16px;
+                    padding: 8px 15px;
+                    border-radius: 8px;
+                }
+            }
+
+            .wallet-apt {
+                bottom: -30px;
+                padding: 0 35px;
+
+                li {
+                    gap: 5px;
+                    padding: 0 15px;
+                    border-radius: 15px;
+                    width: 80px;
+                    height: 80px;
+
+                    .icon {
+                        font-size: 30px;
+                    }
+
+                    span {
+                        font-size: 14px;
+                        font-weight: 500;
+                    }
+                }
+            }
+        }
+
+        .wallet-services {
+            padding: 15px 10px;
+            border-radius: 12px;
+            gap: 25px;
+
+            li {
+                gap: 10px;
+                width: 70px;
+
+                div {
+                    width: 70px;
+                    height: 70px;
+                    border-radius: 10px;
+
+                    .icon {
+                        font-size: 27px;
+                    }
+                }
+
+                span {
+                    font-size: 12px;
+                    font-weight: 600;
+                }
+            }
+        }
+
+        .transactions {
+            width: 100%;
+            height: 100px;
+            border: 0.5px solid #ccc;
+            margin: 20px 0;
+            border-radius: 8px;
+            display: grid;
+            place-items: center;
+        }
+    }
+}
+
+@media (min-width: 1200px) {
+    /* desktops */
+
+    .wallet-bg {
+        padding: 0px 20px;
+
+        .top {
+            margin-bottom: 70px;
+
+            .balance-withdraw {
+                top: 50px;
+                padding: 0 45px;
+
+                p {
+                    font-size: 20px;
+                }
+
+                button {
+                    font-size: 18px;
+                }
+            }
+
+            .wallet-apt {
+                bottom: -30px;
+                padding: 0 45px;
+
+                li {
+                    gap: 5px;
+                    padding: 0 20px;
+                    border-radius: 20px;
+                    width: 80px;
+                    height: 80px;
+
+                    .icon {
+                        font-size: 30px;
+                    }
+
+                    span {
+                        font-size: 14px;
+                        font-weight: 500;
+                    }
+                }
+            }
+        }
+
+        .wallet-services {
+            padding: 15px;
+            border-radius: 15px;
+            gap: 20px 30px;
+
+            li {
+                gap: 10px;
+                width: 60px;
+
+                div {
+                    width: 60px;
+                    height: 60px;
+                    border-radius: 15px;
+
+                    .icon {
+                        font-size: 30px;
+                    }
+                }
+
+                span {
+                    font-size: 14px;
+                    font-weight: 600;
+                }
+            }
+        }
+    }
+}
+
+@media (min-width: 1400px) {
+    /* extra large screens */
+}

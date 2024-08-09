@@ -5,30 +5,7 @@ import CallMadeOutlinedIcon from "@mui/icons-material/CallMadeOutlined";
 import "./index.css";
 import DynamicHeader from "../../Components/DynamicHeader";
 import Footer from "../../Components/Footer";
-
-const notificationsData = [
-    {
-        id: 1,
-        title: "Applied UPSC Application Successfully",
-        time: "2024-06-11, 16:05:35",
-        logo: "/landingPage/collaborators/upsc.svg",
-        bgColor: "transparent",
-    },
-    {
-        id: 2,
-        title: "Applied UPSC Application Successfully",
-        time: "2024-06-11, 16:05:35",
-        logo: "/landingPage/collaborators/upsc.svg",
-        bgColor: "transparent",
-    },
-    {
-        id: 3,
-        title: "Applied SSC GD Application Successfully",
-        time: "2024-06-11, 16:05:35",
-        logo: "/landingPage/collaborators/ssc.svg",
-        bgColor: "#E0E0E0",
-    },
-];
+import { notificationsData } from "../../Config/constants";
 
 const Notifications = () => {
     return (
@@ -37,7 +14,7 @@ const Notifications = () => {
             <div className="notifications-bg">
                 <div className="title-bar">
                     <NotificationsActiveIcon />
-                    <span>All Notifications</span>
+                    <span>All Alerts</span>
                 </div>
                 <div className="filter-btn-box">
                     <button className="active">Application Status</button>

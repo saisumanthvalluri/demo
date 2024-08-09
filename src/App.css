@@ -15,8 +15,8 @@ body {
 
 html {
     scroll-behavior: smooth;
+    /* scrollbar-gutter: stable; */
 }
-
 a {
     color: #fff;
     text-decoration: none;
