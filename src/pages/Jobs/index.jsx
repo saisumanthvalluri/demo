@@ -62,6 +62,7 @@ const Jobs = () => {
                     </ul>
                 </div>
                 <Footer />
+                
             </div>
         </>
     );
