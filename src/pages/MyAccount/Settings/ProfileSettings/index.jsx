@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import "./index.css";
 import DynamicForm from "../../../../Components/DynamicForm";
 import { changePasswordFields, profileDetailsFields } from "../../../../Config/constants";
+import DeleteAccount from "./DeleteAccount";
 
 const ProfileSettings = () => {
     const [activeTab, setActiveTab] = useState(1);
@@ -23,8 +24,7 @@ const ProfileSettings = () => {
                     </>
                 );
             case 3:
-                // return renderDeleteAccount();
-                break;
+                return <DeleteAccount />;
             default:
                 return null;
         }

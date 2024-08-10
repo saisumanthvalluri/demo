@@ -12,6 +12,7 @@ import "./index.css";
 import SavedJobs from "./SavedJobs";
 import ReferAndEarn from "./ReferAndEarn";
 import Settings from "./Settings";
+import OTRForm from "./OTRForm";
 
 const MyAccount = () => {
     const navigate = useNavigate();
@@ -49,7 +50,7 @@ const MyAccount = () => {
             case profileMenuLg[0].id: // Wallet section
                 return <Wallet back={back} />;
             case profileMenuLg[1].id: // OTR section
-                return <Wallet back={back} />;
+                return <OTRForm back={back} />;
             case profileMenuLg[2].id: //Saved Jobs section
                 return <SavedJobs back={back} />;
             case profileMenuLg[3].id: // Saved PYQS section
@@ -87,7 +88,7 @@ const MyAccount = () => {
                                         <span>Complete Your OTR Form</span>
                                         <p>90%</p>
                                     </div>
-                                    <DynamicProgressBar val={90} />
+                                    <DynamicProgressBar val={90} barColor="#F7C480" bgColor="#F6F6F3" />
                                 </div>
                                 <p className="caption">Get the best out by adding the remaining details!</p>
                             </div>
