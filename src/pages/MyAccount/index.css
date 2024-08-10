@@ -293,14 +293,14 @@
                     }
 
                     .prof-menu-list {
+                        display: flex !important;
+                        flex-direction: column;
                         list-style-type: none;
                         padding-left: 0;
-                        display: flex;
-                        flex-direction: column;
                         gap: 10px;
 
                         li {
-                            display: flex;
+                            display: flex !important;
                             align-items: center;
                             gap: 20px;
                             padding: 5px;
