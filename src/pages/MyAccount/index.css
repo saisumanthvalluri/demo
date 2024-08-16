@@ -446,7 +446,7 @@
             }
 
             .right {
-                flex: 2.5;
+                flex: 2.4;
                 gap: 20px;
 
                 .breadcrums {
@@ -516,7 +516,7 @@
             }
 
             .right {
-                flex: 2.5;
+                flex: 2.4;
 
                 .breadcrums {
                     padding: 5px 0;
@@ -583,7 +583,7 @@
             }
 
             .right {
-                flex: 2.8;
+                flex: 2.5;
 
                 .breadcrums {
                     padding: 5px 0;

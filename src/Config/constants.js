@@ -38,6 +38,7 @@ export const jobsData = [
 	{
 		id: 1,
 		title: "Senior Software Engineer",
+		otrFilled: true,
 		company: "Arogya Mitras & Team Leaders - 19 Posts",
 		jobDescription:
 			"Tezpur University has given an employment notification for the recruitment of Professor, Asst Professor, Associate Professor Vacancy. Eligible Candidates who are interested in the Vacancy details & completed all eligibility criteria can read the notification & Apply Online.",
@@ -91,6 +92,7 @@ export const jobsData = [
 		id: 2,
 		title: "Senior Software Engineer",
 		company: "Arogya Mitras & Team Leaders - 19 Posts",
+		otrFilled: false,
 		jobDescription:
 			"Tezpur University has given an employment notification for the recruitment of Professor, Asst Professor, Associate Professor Vacancy. Eligible Candidates who are interested in the Vacancy details & completed all eligibility criteria can read the notification & Apply Online.",
 		qualification: "B.Sc (Nursing)/M.Sc (Nursing)/B.Pharmacy/Ph armacy-D/B.Sc",
@@ -715,9 +717,9 @@ export const otrFormFields = [
 				label: "Gender",
 				type: "radio",
 				options: [
-					{ value: "Male", label: "Male" },
-					{ value: "Female", label: "Female" },
-					{ value: "Other", label: "Other" },
+					{ value: "Male", label: "Male", id: "GENM" },
+					{ value: "Female", label: "Female", id: "GENF" },
+					{ value: "Other", label: "Other", id: "GENO" },
 				],
 				required: true,
 			},

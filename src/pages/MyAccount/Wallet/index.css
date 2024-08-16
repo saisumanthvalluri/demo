@@ -1,18 +1,6 @@
 .wallet-bg {
     padding: 10px;
 
-    /* .back-btn {
-        border: none;
-        outline: none;
-        display: flex;
-        align-items: center;
-        background-color: transparent;
-        margin-bottom: 20px;
-        font-size: 14px;
-        font-weight: 600;
-        cursor: pointer;
-    } */
-
     .top {
         width: 100%;
         position: relative;
@@ -101,13 +89,12 @@
     }
 
     .wallet-services {
-        display: flex;
-        justify-content: space-around;
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
         border: 0.5px solid #ccc;
         margin: 20px 0;
         padding: 10px 0;
         border-radius: 8px;
-        flex-wrap: wrap;
         gap: 15px;
 
         li {
@@ -115,7 +102,6 @@
             flex-direction: column;
             align-items: center;
             gap: 5px;
-            width: 60px;
 
             div {
                 background-color: #f4f4f4;
@@ -153,6 +139,12 @@
 
 @media (min-width: 576px) {
     /* large mobiles */
+
+    .wallet-bg {
+        .wallet-services {
+            grid-template-columns: repeat(4, 1fr);
+        }
+    }
 }
 
 @media (min-width: 768px) {
@@ -206,7 +198,6 @@
 
             li {
                 gap: 8px;
-                width: 65px;
                 cursor: pointer;
 
                 div {
@@ -259,8 +250,8 @@
                     gap: 5px;
                     padding: 0 15px;
                     border-radius: 15px;
-                    width: 80px;
-                    height: 80px;
+                    width: 60px;
+                    height: 60px;
 
                     .icon {
                         font-size: 30px;
@@ -275,17 +266,17 @@
         }
 
         .wallet-services {
+            grid-template-columns: repeat(6, 1fr);
             padding: 15px 10px;
             border-radius: 12px;
             gap: 25px;
 
             li {
                 gap: 10px;
-                width: 70px;
 
                 div {
-                    width: 70px;
-                    height: 70px;
+                    width: 65px;
+                    height: 65px;
                     border-radius: 10px;
 
                     .icon {
@@ -377,7 +368,7 @@
                 }
 
                 span {
-                    font-size: 14px;
+                    font-size: 12px;
                     font-weight: 600;
                 }
             }

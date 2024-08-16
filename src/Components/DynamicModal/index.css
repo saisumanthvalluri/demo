@@ -1,0 +1,150 @@
+.modal-bg {
+    position: absolute;
+    top: 0;
+    width: 100%;
+    height: 100vh;
+    background-color: rgba(0, 0, 0, 0.7);
+    display: grid;
+    place-items: center;
+
+    .inner {
+        background-color: rgba(11, 73, 111, 1);
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        gap: 15px;
+        align-items: center;
+        padding: 15px;
+        min-height: 200px;
+        max-width: 80%;
+        border-radius: 10px;
+
+        .close-icon {
+            align-self: flex-end;
+            color: #fff;
+            font-size: 25px;
+            cursor: pointer;
+        }
+
+        .tick-box {
+            display: grid;
+            place-items: center;
+            width: 60px;
+            height: 60px;
+            border-radius: 100vh;
+            border: 2px solid rgba(0, 255, 10, 1);
+            color: rgba(0, 255, 10, 1);
+            font-size: 40px;
+            animation: inAnOut 3s infinite;
+        }
+
+        h3 {
+            color: #fff;
+            font-weight: 400;
+            font-size: 14px;
+            line-height: 23px;
+
+            span {
+                color: rgba(255, 224, 0, 1);
+                font-weight: 600;
+                font-size: 16px;
+                text-decoration: underline;
+                cursor: pointer;
+
+                &.spn-id {
+                    color: rgba(252, 103, 103, 1);
+                }
+            }
+        }
+
+        .atn-btn-box {
+            display: flex;
+            justify-content: flex-end;
+            gap: 10px;
+            width: 100%;
+
+            button {
+                background: linear-gradient(90deg, #ec008c 0%, #fc6767 100%);
+                padding: 5px 15px;
+                border: none;
+                outline: none;
+                font-size: 14px;
+                font-weight: 500;
+                color: #fff;
+                border-radius: 5px;
+                cursor: pointer;
+            }
+        }
+    }
+}
+
+@keyframes inAnOut {
+    0% {
+        transform: scale(0.7);
+    }
+    50% {
+        transform: scale(1.1);
+    }
+    100% {
+        transform: scale(0.7);
+    }
+}
+
+@media (min-width: 576px) {
+    /* large mobiles */
+}
+
+@media (min-width: 768px) {
+    /* tablets */
+
+    .modal-bg {
+        .inner {
+            padding: 20px;
+            max-width: 45%;
+
+            .tick-box {
+                width: 70px;
+                height: 70px;
+            }
+        }
+    }
+}
+
+@media (min-width: 992px) {
+    /* laptops */
+
+    .modal-bg {
+        .inner {
+            max-width: 35%;
+        }
+    }
+}
+
+@media (min-width: 1200px) {
+    /* desktops */
+
+    .modal-bg {
+        .inner {
+            padding: 20px;
+            max-width: 30%;
+
+            .tick-box {
+                width: 75px;
+                height: 75px;
+            }
+
+            h3 {
+                font-size: 16px;
+                line-height: 30px;
+
+                span {
+                    font-size: 18px;
+                }
+            }
+        }
+    }
+}
+
+@media (min-width: 1400px) {
+    /* extra large screens */
+}
