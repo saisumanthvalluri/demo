@@ -97,6 +97,18 @@
                         &::placeholder {
                             color: #c8c4c4;
                         }
+/* 
+                        &:focus {
+                            border: 1px solid #a8a6a6;
+                            transition: all 0.3s ease-in-out;
+                        } */
+
+                        &.error {
+                            border: 1px solid rgba(225, 16, 16, 1);
+                            &::placeholder {
+                                color: rgba(225, 16, 16, 0.8);
+                            }
+                        }
                     }
 
                     .eye-icon {
@@ -131,6 +143,10 @@
                             font-size: 12px;
                             transition: all 0.3s ease;
                             outline: none;
+                        }
+
+                        &.error {
+                            border: 1px solid red;
                         }
                     }
 
