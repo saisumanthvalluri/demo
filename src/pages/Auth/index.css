@@ -81,38 +81,74 @@
                         color: #fff;
                     }
 
-                    input {
+                    .form-input-err {
+                        display: flex;
+                        flex-direction: column;
                         flex-grow: 1;
                         max-width: calc(100% - (10% + 10px));
-                        padding: 7px 10px;
-                        border-radius: 5px;
-                        border: none;
-                        outline: none;
-                        color: #fff;
-                        background-color: transparent;
-                        font-size: 14px;
-                        font-weight: 500;
-                        border: 1px solid #a8a6a6;
 
-                        &::placeholder {
-                            color: #c8c4c4;
-                        }
-/* 
-                        &:focus {
+                        input {
+                            width: 100%;
+                            padding: 7px 10px;
+                            border-radius: 5px;
+                            border: none;
+                            outline: none;
+                            color: #fff;
+                            background-color: transparent;
+                            font-size: 14px;
+                            font-weight: 500;
                             border: 1px solid #a8a6a6;
-                            transition: all 0.3s ease-in-out;
-                        } */
 
-                        &.error {
-                            border: 1px solid rgba(225, 16, 16, 1);
                             &::placeholder {
-                                color: rgba(225, 16, 16, 0.8);
+                                color: #c8c4c4;
+                            }
+                            /* 
+                            &:focus {
+                                border: 1px solid #a8a6a6;
+                                transition: all 0.3s ease-in-out;
+                            } */
+
+                            &.error {
+                                border: 1px solid rgba(225, 16, 16, 1);
+                            }
+                        }
+
+                        select {
+                            flex-grow: 1;
+                            padding: 7px 10px;
+                            border-radius: 5px;
+                            border: none;
+                            outline: none;
+                            color: #fff;
+                            background-color: transparent;
+                            font-size: 14px;
+                            font-weight: 500;
+                            border: 1px solid #a8a6a6;
+                            cursor: pointer;
+                            appearance: none; /* Remove default arrow */
+                            background-image: url("data:image/svg+xml;charset=US-ASCII,%3Csvg xmlns%3D%22http%3A//www.w3.org/2000/svg%22 viewBox%3D%220 0 4 5%22%3E%3Cpath fill%3D%22%23a8a6a6%22 d%3D%22M2 0L0 2h4zM2 5L0 3h4z%22/%3E%3C/svg%3E");
+                            background-repeat: no-repeat;
+                            background-position: right 10px top 50%;
+                            background-size: 15px 10px;
+
+                            option {
+                                padding: 10px;
+                                background-color: rgba(21, 45, 67, 1);
+                                color: #fff;
+                                font-size: 12px;
+                                transition: all 0.3s ease;
+                                outline: none;
+                            }
+
+                            &.error {
+                                border: 1px solid rgba(225, 16, 16, 1);
                             }
                         }
                     }
 
                     .eye-icon {
                         position: absolute;
+                        top: 5px;
                         right: 10px;
                         cursor: pointer;
                         color: #a8a6a6;
@@ -120,33 +156,6 @@
 
                         &:hover {
                             color: #fff;
-                        }
-                    }
-
-                    select {
-                        flex-grow: 1;
-                        padding: 7px 10px;
-                        border-radius: 5px;
-                        border: none;
-                        outline: none;
-                        color: #fff;
-                        background-color: transparent;
-                        font-size: 14px;
-                        font-weight: 500;
-                        border: 1px solid #a8a6a6;
-                        cursor: pointer;
-
-                        option {
-                            padding: 10px;
-                            background-color: rgba(21, 45, 67, 1);
-                            color: #fff;
-                            font-size: 12px;
-                            transition: all 0.3s ease;
-                            outline: none;
-                        }
-
-                        &.error {
-                            border: 1px solid red;
                         }
                     }
 
@@ -167,6 +176,13 @@
                         font-size: 12px;
                         font-weight: 500;
                     }
+                }
+
+                .err-msg {
+                    color: rgba(225, 16, 16, 1);
+                    font-size: 10px;
+                    font-weight: 400;
+                    margin-top: 3px;
                 }
 
                 button {
@@ -259,20 +275,26 @@
                             font-size: 30px;
                         }
 
-                        input {
-                            flex-grow: 1;
+                        .form-input-err {
                             max-width: calc(100% - (10% + 15px));
-                            padding: 10px 15px;
-                            font-size: 16px;
+
+                            input {
+                                padding: 10px 15px;
+                                font-size: 16px;
+                            }
+
+                            select {
+                                padding: 10px 15px;
+                                font-size: 16px;
+
+                                option {
+                                    font-size: 14px;
+                                }
+                            }
                         }
 
-                        select {
-                            padding: 10px 15px;
-                            font-size: 16px;
-
-                            option {
-                                font-size: 14px;
-                            }
+                        .eye-icon {
+                            top: 8px;
                         }
 
                         .rem-box {
@@ -332,18 +354,20 @@
                             font-size: 35px;
                         }
 
-                        input {
-                            padding: 10px 15px;
-                            font-size: 16px;
-                        }
-
-                        select {
-                            padding: 12px 15px;
-                            font-size: 18px;
-                            letter-spacing: 0.02rem;
-
-                            option {
+                        .form-input-err {
+                            input {
+                                padding: 10px 15px;
                                 font-size: 16px;
+                            }
+
+                            select {
+                                padding: 12px 15px;
+                                font-size: 18px;
+                                letter-spacing: 0.02rem;
+
+                                option {
+                                    font-size: 16px;
+                                }
                             }
                         }
 
@@ -355,6 +379,11 @@
                         a {
                             font-size: 14px;
                         }
+                    }
+
+                    .err-msg {
+                        font-size: 12px;
+                        margin-top: 4px;
                     }
 
                     button {
@@ -405,18 +434,20 @@
                             font-size: 35px;
                         }
 
-                        input {
-                            padding: 10px 15px;
-                            font-size: 16px;
-                        }
-
-                        select {
-                            padding: 10px 15px;
-                            font-size: 16px;
-                            letter-spacing: 0.02rem;
-
-                            option {
+                        .form-input-err {
+                            input {
+                                padding: 10px 15px;
                                 font-size: 16px;
+                            }
+
+                            select {
+                                padding: 10px 15px;
+                                font-size: 16px;
+                                letter-spacing: 0.02rem;
+
+                                option {
+                                    font-size: 16px;
+                                }
                             }
                         }
 
@@ -474,17 +505,19 @@
                             font-size: 35px;
                         }
 
-                        input {
-                            padding: 14px 15px;
-                            font-size: 16px;
-                        }
-
-                        select {
-                            padding: 14px 15px;
-                            font-size: 18px;
-
-                            option {
+                        .form-input-err {
+                            input {
+                                padding: 14px 15px;
                                 font-size: 16px;
+                            }
+
+                            select {
+                                padding: 14px 15px;
+                                font-size: 18px;
+
+                                option {
+                                    font-size: 16px;
+                                }
                             }
                         }
 

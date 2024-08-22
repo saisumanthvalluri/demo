@@ -55,3 +55,23 @@
         align-self: center;
     }
 }
+
+@media (min-width: 576px) {
+    /* large mobiles */
+}
+
+@media (min-width: 768px) {
+    /* tablets */
+}
+
+@media (min-width: 992px) {
+    /* laptops */
+}
+
+@media (min-width: 1200px) {
+    /* desktops */
+}
+
+@media (min-width: 1400px) {
+    /* extra large screens */
+}

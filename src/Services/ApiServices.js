@@ -2,7 +2,7 @@
 import axios from "axios";
 
 const api = axios.create({
-    baseURL: "http://mbdev-env.eba-vrgk6yrw.ap-south-1.elasticbeanstalk.com/ojp", // Replace with your actual base URL
+    baseURL: "http://localhost:8080/ojp", // Replace with your actual base URL
     // baseURL: "https://api.escuelajs.co/api/v1",
     headers: {
         "Content-Type": "application/json",
@@ -15,7 +15,7 @@ export const login = async (email, password) => {
 };
 
 export const signup = async (userData) => {
-    const response = await api.post("/user/signup", userData);
+    const response = await api.post("/user/singUp", userData);
     return response.data;
 };
 

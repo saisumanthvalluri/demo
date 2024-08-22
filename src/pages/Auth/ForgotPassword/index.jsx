@@ -4,18 +4,38 @@ import MarkEmailReadIcon from "@mui/icons-material/MarkEmailRead";
 import "./index.css";
 import "../index.css";
 import { Link } from "react-router-dom";
+import { useForm } from "react-hook-form";
+import { zodResolver } from "@hookform/resolvers/zod";
+import forgotPasswordFormSchema from "../../../Schema/forgotPasswordFormSchema";
+import DynamicInputField from "../../../Components/DynamicInputField";
 
 const ForgotPassword = () => {
     const [sentLink, setSentLink] = useState(false);
 
-    const handleSendLink = (e) => {
-        e.preventDefault();
-        setSentLink(true); // Simulate sending email link
+    const {
+        register,
+        handleSubmit,
+        formState: { errors },
+    } = useForm({
+        resolver: zodResolver(forgotPasswordFormSchema),
+    });
+
+    // const handleSendLink = (e) => {
+    //     e.preventDefault();
+    //     setSentLink(true); // Simulate sending email link
+    //     setTimeout(() => {
+    //         setSentLink(false);
+    //     }, 3000); // Reset after 3 seconds
+    // };
+
+    const handleSendLink = handleSubmit((data) => {
+        console.log(data);
+        // Simulate sending email link
+        setSentLink(true);
         setTimeout(() => {
             setSentLink(false);
         }, 3000); // Reset after 3 seconds
-    };
-
+    });
     return (
         <div className="auth-bg">
             <div className="inner">
@@ -31,7 +51,14 @@ const ForgotPassword = () => {
                     <form onSubmit={(e) => handleSendLink(e)}>
                         <div className="form-item">
                             <EmailOutlinedIcon className="form-item-icon" />
-                            <input type="email" placeholder="Enter your email" required />
+                            {/* <input type="email" placeholder="Enter your email" required /> */}
+                            <DynamicInputField
+                                type="email"
+                                placeholder="Enter your email"
+                                name="email"
+                                register={register}
+                                error={errors?.email}
+                            />
                         </div>
                         {sentLink ? (
                             <div className="success-msg-box">
