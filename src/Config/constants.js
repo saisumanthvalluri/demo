@@ -2030,3 +2030,84 @@ export const changePasswordFields = [
         reqVal: "phone_number",
     },
 ];
+
+export const applyThroughOTRFields = [
+    {
+        name: "admitCardDelivery",
+        label: "Do you want Admit card delivery?",
+        type: "radio",
+        required: true,
+        options: [
+            { value: "Yes", label: "Yes", id: "ACDYES" },
+            { value: "No", label: "No", id: "ADCNO" },
+        ],
+    },
+    {
+        name: "divider",
+        type: "line",
+        required: true,
+        sectionName: "Enter Additional Details",
+    },
+    {
+        name: "prevEmpDetails",
+        label: "Do you have any previous employment details to share?",
+        placeholder: "Your Answer",
+        type: "text",
+        required: true,
+    },
+    {
+        name: "durationOfPrevEmp",
+        label: "What was the duration of your previous employment?",
+        placeholder: "Your Answer",
+        type: "text",
+        required: true,
+    },
+    {
+        name: "positionOfPrevEmp",
+        label: "What position did you hold in your previous employment?",
+        placeholder: "Your Answer",
+        required: true,
+        type: "text",
+    },
+    {
+        name: "reasonForLeaving",
+        label: "What was the reason for leaving your previous employment?",
+        placeholder: "Your Answer",
+        required: true,
+        type: "text",
+    },
+    {
+        name: "prefExmCenter",
+        label: "What is your preferred examination center?",
+        required: true,
+        type: "select",
+        options: [
+            { value: "Anakapalli", label: "Anakapalli" },
+            { value: "Anantapur", label: "Anantapur" },
+            { value: "Annamaiah", label: "Annamaiah" },
+            { value: "Bapatla", label: "Bapatla" },
+            { value: "Chittoor", label: "Chittoor" },
+            { value: "East Godavari", label: "East Godavari" },
+        ],
+    },
+    {
+        name: "convictedByCourt",
+        label: "Have you ever been convicted by a court of law?",
+        placeholder: "Your Answer",
+        required: true,
+        type: "text",
+    },
+    {
+        name: "dismissedFromService",
+        label: "  Have you ever been dismissed from service?",
+        placeholder: "Your Answer",
+        required: true,
+        type: "text",
+    },
+    {
+        name: "hereBy",
+        label: "I hereby declare that all the information provided above is true to the best of my knowledge and belief.",
+        type: "checkbox",
+        required: true,
+    },
+];

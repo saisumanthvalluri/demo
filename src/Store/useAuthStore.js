@@ -1,8 +1,12 @@
 import { create } from "zustand";
+import { getuserDTOFromLS } from "../utils/user";
 
 export const useAuthStore = create((set) => ({
-    user: null,
-    setUser: (userData) => set({ user: userData }),
+    user: getuserDTOFromLS(), // Load from local storage,
+    setUser: (userData) => {
+        localStorage.setItem("userDTO", JSON.stringify(userData));
+        set({ user: userData });
+    },
     clearUser: () => set({ user: null }),
 }));
 

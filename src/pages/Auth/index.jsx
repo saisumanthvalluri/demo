@@ -9,13 +9,14 @@ import VisibilityOffOutlinedIcon from "@mui/icons-material/VisibilityOffOutlined
 import VisibilityOutlinedIcon from "@mui/icons-material/VisibilityOutlined";
 import CrisisAlertOutlinedIcon from "@mui/icons-material/CrisisAlertOutlined";
 import { useMutation } from "@tanstack/react-query";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { useForm } from "react-hook-form";
 import { login, signup } from "../../Services/ApiServices";
 import loginFormSchema from "../../Schema/loginFormSchema";
 import signupFormSchema from "../../Schema/signupFormSchema";
 import DynamicInputField from "../../Components/DynamicInputField";
 import "./index.css";
+import useAuthStore from "../../Store/useAuthStore";
 
 const interestOptions = [
     { label: "Select Interest", value: "none", id: 1 },
@@ -42,6 +43,11 @@ const qualificationOptions = [
 const Auth = () => {
     const [form, setForm] = useState("login");
     const [showPassword, setShowPassword] = useState(false);
+    const [errors, setErrors] = useState({ login: "", signUp: "" });
+
+    const { setUser } = useAuthStore();
+
+    const navigate = useNavigate();
 
     // Login form setup
     const {
@@ -66,9 +72,12 @@ const Auth = () => {
         onSuccess: (data) => {
             console.log("Login successful:", data);
             // Handle successful login
+            // localStorage.setItem("userDTO", JSON.stringify(data));
+            setUser(data);
+            navigate("/jobs");
         },
         onError: (error) => {
-            console.error("Login failed:", error);
+            setErrors((prevErrors) => ({ ...prevErrors, login: error.response.data }));
         },
     });
 
@@ -79,7 +88,7 @@ const Auth = () => {
             // Handle successful signup
         },
         onError: (error) => {
-            console.error("Signup failed:", error);
+            setErrors((prevErrors) => ({ ...prevErrors, signUp: error.response.data }));
         },
     });
 
@@ -154,8 +163,9 @@ const Auth = () => {
                                 </div>
                                 <Link to="/forgot-password">Forgot Password?</Link>
                             </div>
-                            <button type="submit" disabled={loginMutation.isLoading}>
-                                {loginMutation.isLoading ? "Loading..." : "Login"}
+                            {errors.login !== "" && <span>{errors?.login}</span>}
+                            <button type="submit" disabled={loginMutation.isPending}>
+                                {loginMutation.isPending ? "Loading..." : "Login"}
                             </button>
                         </form>
                     ) : (
@@ -259,9 +269,9 @@ const Auth = () => {
                                 </div>
                             </div>
                             {signupErrors?.tc && <p className="err-msg">{signupErrors.tc.message}</p>}
-
-                            <button type="submit" disabled={signupMutation.isLoading}>
-                                {signupMutation.isLoading ? "Loading..." : "Sign Up"}
+                            {errors.signUp !== "" && <span>{errors?.signUp}</span>}
+                            <button type="submit" disabled={signupMutation.isPending}>
+                                {signupMutation.isPending ? "Loading..." : "Sign Up"}
                             </button>
                         </form>
                     )}

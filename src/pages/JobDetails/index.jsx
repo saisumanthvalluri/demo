@@ -1,23 +1,34 @@
 import { useState } from "react";
 import { useNavigate, useSearchParams } from "react-router-dom";
 import { IoMdShare, IoIosHeartEmpty, IoMdDownload } from "react-icons/io";
-import { BsCheck2 } from "react-icons/bs";
+// import { BsCheck2 } from "react-icons/bs";
 import "./index.css";
 import DynamicHeader from "../../Components/DynamicHeader";
 // import JobFilters from "../Jobs/Filters";
 import { jobsData } from "../../Config/constants";
 import Footer from "../../Components/Footer";
 import DynamicModal from "../../Components/DynamicModal";
+import useApplicationStore from "../../Store/useApplicationStore";
 
 const JobDetails = () => {
     const [searchParams] = useSearchParams();
+    const paramValue = searchParams.get("job_id") || "No param provided";
+    const jobData = jobsData[paramValue - 1];
     const navigate = useNavigate();
 
     const [open, setOpen] = useState(false);
     // const [jobTabId, setJobTabId] = useState(2);
 
-    const paramValue = searchParams.get("job_id") || "No param provided";
-    const jobData = jobsData[paramValue - 1];
+    const { setSelectedJob } = useApplicationStore();
+
+    const handleJobApply = () => {
+        if (!jobData?.otrFilled) {
+            setOpen(true);
+        } else {
+            setSelectedJob(jobData);
+            navigate("/apply-through-otr");
+        }
+    };
 
     const VacancyDetailsTable = (data) => (
         <table className="vac-det-tbl">
@@ -109,38 +120,41 @@ const JobDetails = () => {
                                 <button className="notif">
                                     <IoMdDownload /> Notification
                                 </button>
-                                <button onClick={() => setOpen(true)}>Apply Now</button>
+                                <button onClick={handleJobApply}>Apply Now</button>
                             </div>
                         </div>
                     </div>
                 </div>
                 {open && (
                     <DynamicModal setOpen={setOpen}>
-                        {!jobData?.otrFilled ? (
-                            <>
-                                <h3>
-                                    Fill your <span>OTR Form</span> and Apply Your Favourite Exam Within two Minutes
-                                </h3>
-                                <div className="atn-btn-box">
-                                    <button onClick={() => navigate("/otr")}>Register OTR Form</button>
-                                </div>
-                            </>
-                        ) : (
-                            <>
-                                <div className="tick-box">
-                                    <BsCheck2 />
-                                </div>
-                                <h3>
-                                    <span>OTR Form</span> is Completed Successfully. Your SPN ID is{" "}
-                                    <span className="spn-id">AP125XXXXX</span>. Now you can start your Job Application
-                                    Form
-                                </h3>
-                                <div className="atn-btn-box">
-                                    <button onClick={() => setOpen(false)}>OK</button>
-                                    <button>Apply</button>
-                                </div>
-                            </>
-                        )}
+                        {
+                            !jobData?.otrFilled && (
+                                <>
+                                    <h3>
+                                        Fill your <span>OTR Form</span> and Apply Your Favourite Exam Within two Minutes
+                                    </h3>
+                                    <div className="atn-btn-box">
+                                        <button onClick={() => navigate("/otr")}>Register OTR Form</button>
+                                    </div>
+                                </>
+                            )
+                            // : (
+                            //     <>
+                            //         <div className="tick-box">
+                            //             <BsCheck2 />
+                            //         </div>
+                            //         <h3>
+                            //             <span>OTR Form</span> is Completed Successfully. Your SPN ID is{" "}
+                            //             <span className="spn-id">AP125XXXXX</span>. Now you can start your Job Application
+                            //             Form
+                            //         </h3>
+                            //         <div className="atn-btn-box">
+                            //             <button onClick={() => setOpen(false)}>OK</button>
+                            //             <button>Apply</button>
+                            //         </div>
+                            //     </>
+                            // )
+                        }
                     </DynamicModal>
                 )}
                 <Footer />
