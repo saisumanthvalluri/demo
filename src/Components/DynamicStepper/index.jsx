@@ -5,7 +5,7 @@ import Step from "@mui/material/Step";
 import StepLabel from "@mui/material/StepLabel";
 import "./index.css";
 
-const DynamicStepper = ({ setActiveStep, activeStep, OTRSteps, debouncedSave, type }) => {
+const DynamicStepper = ({ setActiveStep, activeStep, OTRSteps, debouncedSave, type, onSubmit }) => {
     const [skipped, setSkipped] = React.useState(new Set());
 
     const isStepSkipped = (step) => {
@@ -19,9 +19,10 @@ const DynamicStepper = ({ setActiveStep, activeStep, OTRSteps, debouncedSave, ty
             newSkipped.delete(activeStep);
         }
 
-        setActiveStep((prevActiveStep) => prevActiveStep + 1);
-        debouncedSave(activeStep + 1);
+        // setActiveStep((prevActiveStep) => prevActiveStep + 1);
+        // debouncedSave(activeStep + 1);
         setSkipped(newSkipped);
+        onSubmit()
     };
 
     const handleBack = () => {

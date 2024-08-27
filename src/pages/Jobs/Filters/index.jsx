@@ -3,6 +3,50 @@ import { IoIosArrowBack, IoIosArrowForward, IoIosArrowDown } from "react-icons/i
 import { IoFilter } from "react-icons/io5";
 import "./index.css";
 import { jobTabs } from "../../../Config/constants";
+import MultiLevelDropdown from "../../../Components/MultiLevelDropdown";
+
+const menuItems = [
+    {
+        label: "Central Govt",
+        subItems: [
+            { label: "IAS", value: "ias" },
+            { label: "IPS", value: "ips" },
+            { label: "IRS", value: "irs" },
+        ],
+    },
+    {
+        label: "State Govt",
+        subItems: [
+            { label: "State Civil", value: "state_civil" },
+            { label: "State Police", value: "state_police" },
+            { label: "State PSC", value: "state_psc" },
+        ],
+    },
+    {
+        label: "PSUs",
+        subItems: [
+            { label: "BHEL", value: "bhel" },
+            { label: "ONGC", value: "ongc" },
+            { label: "SAIL", value: "sail" },
+        ],
+    },
+    {
+        label: "Railways",
+        subItems: [
+            { label: "Group A", value: "group_a" },
+            { label: "Group B", value: "group_b" },
+            { label: "Group C", value: "group_c" },
+        ],
+    },
+    {
+        label: "Defence",
+        subItems: [
+            { label: "Army", value: "army" },
+            { label: "Navy", value: "navy" },
+            { label: "Air Force", value: "air_force" },
+        ],
+    },
+];
 
 const JobFilters = ({ jobTabId, setJobTabId }) => {
     const tabsContainerRef = useRef(null);
@@ -48,7 +92,7 @@ const JobFilters = ({ jobTabId, setJobTabId }) => {
             <div className="filters-box">
                 <h4>{jobTabs[jobTabId - 1].title}</h4>
                 <div className="filters">
-                    <div>
+                    {/* <div>
                         <span>All</span>
                     </div>
                     <div>
@@ -58,7 +102,8 @@ const JobFilters = ({ jobTabId, setJobTabId }) => {
                     <div>
                         <span>Qualification</span>
                         <IoIosArrowDown className="icon" />
-                    </div>
+                    </div> */}
+                    <MultiLevelDropdown menuItems={menuItems} />
                 </div>
                 <div className="mob-filters">
                     <IoFilter />

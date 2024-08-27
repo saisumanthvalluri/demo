@@ -2,13 +2,13 @@ import { z } from "zod";
 
 const signupFormSchema = z
     .object({
-        username: z
+        userName: z
             .string()
             .min(3, { message: "Username must be at least 3 characters long" })
             .max(20, { message: "Username must be at most 20 characters long" })
             .min(1, { message: "Username is required" }),
         email: z.string().email({ message: "Invalid email address!" }).min(1, { message: "Email is required" }),
-        phone: z
+        phoneNumber: z
             .string()
             .regex(/^[0-9]{10}$/, { message: "Phone number must be exactly 10 digits" })
             .min(1, { message: "Phone number is required" }),

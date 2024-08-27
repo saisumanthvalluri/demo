@@ -17,6 +17,8 @@ import signupFormSchema from "../../Schema/signupFormSchema";
 import DynamicInputField from "../../Components/DynamicInputField";
 import "./index.css";
 import useAuthStore from "../../Store/useAuthStore";
+import { toast } from "react-toastify";
+import DynamicLoader from "../../Components/DynamicLoader";
 
 const interestOptions = [
     { label: "Select Interest", value: "none", id: 1 },
@@ -43,11 +45,12 @@ const qualificationOptions = [
 const Auth = () => {
     const [form, setForm] = useState("login");
     const [showPassword, setShowPassword] = useState(false);
-    const [errors, setErrors] = useState({ login: "", signUp: "" });
+    // const [errors, setErrors] = useState({ login: "", signUp: "" });
 
     const { setUser } = useAuthStore();
 
     const navigate = useNavigate();
+    const errorAudio = new Audio("/error-tone.mp3");
 
     // Login form setup
     const {
@@ -72,12 +75,13 @@ const Auth = () => {
         onSuccess: (data) => {
             console.log("Login successful:", data);
             // Handle successful login
-            // localStorage.setItem("userDTO", JSON.stringify(data));
             setUser(data);
             navigate("/jobs");
         },
         onError: (error) => {
-            setErrors((prevErrors) => ({ ...prevErrors, login: error.response.data }));
+            // setErrors((prevErrors) => ({ ...prevErrors, login: error.response.data }));
+            toast.error(error.response.data);
+            errorAudio.play();
         },
     });
 
@@ -86,9 +90,13 @@ const Auth = () => {
         onSuccess: (data) => {
             console.log("Signup successful:", data);
             // Handle successful signup
+            setUser(data);
+            navigate("/jobs");
         },
         onError: (error) => {
-            setErrors((prevErrors) => ({ ...prevErrors, signUp: error.response.data }));
+            // setErrors((prevErrors) => ({ ...prevErrors, signUp: error.response.data }));
+            toast.error(error.response.data);
+            errorAudio.play();
         },
     });
 
@@ -163,9 +171,11 @@ const Auth = () => {
                                 </div>
                                 <Link to="/forgot-password">Forgot Password?</Link>
                             </div>
-                            {errors.login !== "" && <span>{errors?.login}</span>}
+                            {/* {errors.login !== "" && <span className="err-msg text-center">{errors?.login}</span>} */}
                             <button type="submit" disabled={loginMutation.isPending}>
-                                {loginMutation.isPending ? "Loading..." : "Login"}
+                                {loginMutation.isPending
+                                    ? DynamicLoader("RotatingLines", 20, 20, "#fff", true)
+                                    : "Login"}
                             </button>
                         </form>
                     ) : (
@@ -174,10 +184,10 @@ const Auth = () => {
                                 <PersonOutlinedIcon className="form-item-icon" />
                                 <DynamicInputField
                                     type="text"
-                                    name="username"
-                                    placeholder="Username"
+                                    name="userName"
+                                    placeholder="user Name"
                                     register={signupRegister}
-                                    error={signupErrors?.username}
+                                    error={signupErrors?.userName}
                                 />
                             </div>
                             <div className="form-item">
@@ -194,10 +204,10 @@ const Auth = () => {
                                 <PhoneOutlinedIcon className="form-item-icon" />
                                 <DynamicInputField
                                     type="tel"
-                                    name="phone"
+                                    name="phoneNumber"
                                     placeholder="Phone"
                                     register={signupRegister}
-                                    error={signupErrors?.phone}
+                                    error={signupErrors?.phoneNumber}
                                 />
                             </div>
                             <div className="form-item">
@@ -269,9 +279,11 @@ const Auth = () => {
                                 </div>
                             </div>
                             {signupErrors?.tc && <p className="err-msg">{signupErrors.tc.message}</p>}
-                            {errors.signUp !== "" && <span>{errors?.signUp}</span>}
+                            {/* {errors.signUp !== "" && <span className="err-msg text-center">{errors?.signUp}</span>} */}
                             <button type="submit" disabled={signupMutation.isPending}>
-                                {signupMutation.isPending ? "Loading..." : "Sign Up"}
+                                {signupMutation.isPending
+                                    ? DynamicLoader("RotatingLines", 20, 20, "#fff", true)
+                                    : "Sign Up"}
                             </button>
                         </form>
                     )}

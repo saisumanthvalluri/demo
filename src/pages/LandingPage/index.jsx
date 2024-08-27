@@ -200,7 +200,7 @@ const LandingPage = () => {
                                         <td>{statesWithAddress[activeStateId].address.branchName}</td>
                                         <td>
                                             {statesWithAddress[activeStateId].address.phone.map((e) => (
-                                                <p>{e}</p>
+                                                <p key={e}>{e}</p>
                                             ))}
                                         </td>
                                         <td>{statesWithAddress[activeStateId].address.email}</td>

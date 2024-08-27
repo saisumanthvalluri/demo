@@ -18,7 +18,7 @@ const Captcha = ({ captcha, setCaptcha }) => {
         for (let i = 0; i < 6; i++) {
             captchaText += characters.charAt(Math.floor(Math.random() * characters.length));
         }
-        setCaptcha((prev) => ({ ...prev, genCaptcha: captchaText }));
+        setCaptcha((prev) => ({ ...prev, genCaptcha: captchaText, userCaptcha: "" }));
         // setIsVerified(false);
     };
 

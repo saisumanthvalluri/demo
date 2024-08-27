@@ -53,6 +53,10 @@
     &:focus {
         border-bottom: 1px solid #008cba;
     }
+
+    &.error:not(:focus) {
+        border-bottom: 1px solid var(--error-txt-color);
+    }
 }
 
 .verify-button {

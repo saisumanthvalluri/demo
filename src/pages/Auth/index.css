@@ -98,17 +98,17 @@
                             font-size: 14px;
                             font-weight: 500;
                             border: 1px solid #a8a6a6;
+                            transition: all 0.3s ease-in-out;
 
                             &::placeholder {
                                 color: #c8c4c4;
                             }
-                            /* 
+
                             &:focus {
                                 border: 1px solid #a8a6a6;
-                                transition: all 0.3s ease-in-out;
-                            } */
+                            }
 
-                            &.error {
+                            &.error:not(:focus) {
                                 border: 1px solid rgba(225, 16, 16, 1);
                             }
                         }
