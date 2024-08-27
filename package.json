@@ -52,5 +52,8 @@
             "last 1 safari version"
         ]
     },
-    "proxy": "http://mbdev-env.eba-vrgk6yrw.ap-south-1.elasticbeanstalk.com"
+    "proxy": "http://mbdev-env.eba-vrgk6yrw.ap-south-1.elasticbeanstalk.com",
+    "devDependencies": {
+        "@babel/plugin-proposal-private-property-in-object": "^7.21.11"
+    }
 }
