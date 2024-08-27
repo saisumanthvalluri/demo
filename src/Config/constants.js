@@ -10,6 +10,7 @@ import { FcMoneyTransfer } from "react-icons/fc";
 import { FaMobileAlt, FaChartLine } from "react-icons/fa";
 import { AiFillInsurance } from "react-icons/ai";
 import { RiNetflixFill } from "react-icons/ri";
+import { email, nameSpaceSchema } from "../Schema/profileDetailsSchema";
 
 // ========================== Jobs page Data =============================
 export const jobTabs = [
@@ -1898,9 +1899,10 @@ export const profileDetailsFields = [
     {
         name: "name",
         label: "Name",
-        placeholder: "Name",
+        placeholder: "Name ee",
         type: "text",
         required: true,
+        schema: nameSpaceSchema,
     },
     {
         name: "email",
@@ -1908,6 +1910,7 @@ export const profileDetailsFields = [
         placeholder: "Email",
         type: "text",
         required: true,
+        schema: email,
     },
     {
         name: "otp",

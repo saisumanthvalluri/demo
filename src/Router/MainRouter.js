@@ -12,12 +12,13 @@ import JobDetails from "../pages/JobDetails";
 import OTR from "../pages/OTR";
 import MyAccount from "../pages/MyAccount";
 import ApplyThroughOTR from "../pages/ApplyThroughOTR";
-import useAuthStore from "../Store/useAuthStore";
+// import useAuthStore from "../Store/useAuthStore";
 import Toaster from "../Components/Toastify";
 import PaymentDetails from "../pages/PaymentDetails";
+const user = true;
 
 const MainRouter = () => {
-    const { user } = useAuthStore();
+    // const { user } = useAuthStore();
 
     const ProtectedRoute = ({ element }) => {
         const location = useLocation();

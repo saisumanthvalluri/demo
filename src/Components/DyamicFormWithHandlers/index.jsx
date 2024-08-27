@@ -8,6 +8,7 @@ import "./index.css";
 const DynamicFormWithHandlers = ({ fields }) => {
     const [formData, setFormData] = useState({});
     const [showPassword, setShowPassword] = useState(false);
+    const [validationErrors, setValidationErrors] = useState({});
 
     useEffect(() => {
         const savedFormData = JSON.parse(localStorage.getItem("formData"));
@@ -33,21 +34,29 @@ const DynamicFormWithHandlers = ({ fields }) => {
         });
     };
 
-    const handleChange = (e, notReqVal) => {
+    const handleChange = (e, fieldData) => {
         const { name, value } = e.target;
+        // console.log(fieldData, "dsjifn");
 
         setFormData((prevFormData) => {
             const newFormData = { ...prevFormData, [name]: value };
 
             const field = findFieldByName(fields, name);
 
-            if (field?.subFields && value === notReqVal) {
+            if (field?.subFields && value === fieldData?.notReqVal) {
                 clearSubFields(field.subFields, newFormData);
             }
 
             debouncedSave(newFormData);
             return newFormData;
         });
+
+        try {
+            fieldData.schema?.parse(value);
+            setValidationErrors((prevErrors) => ({ ...prevErrors, [name]: "" }));
+        } catch (error) {
+            setValidationErrors((prevErrors) => ({ ...prevErrors, [name]: JSON.parse(error)[0].message }));
+        }
     };
 
     const handleChangeFile = (e) => {
@@ -115,7 +124,7 @@ const DynamicFormWithHandlers = ({ fields }) => {
                             type="text"
                             name={field.name}
                             value={formData[field.name] || ""}
-                            onChange={handleChange}
+                            onChange={(e) => handleChange(e, field)}
                             placeholder={field?.placeholder}
                         />
 
@@ -124,6 +133,7 @@ const DynamicFormWithHandlers = ({ fields }) => {
                                 {field.btn.text}
                             </button>
                         )}
+                        {validationErrors[field.name] && <p className="err-msg">{validationErrors[field.name]}</p>}
                     </div>
                 );
             case "select":
@@ -132,7 +142,10 @@ const DynamicFormWithHandlers = ({ fields }) => {
                         <span>
                             {field.label} <span className="star">*</span>
                         </span>
-                        <select name={field.name} value={formData[field.name] || ""} onChange={handleChange}>
+                        <select
+                            name={field.name}
+                            value={formData[field.name] || ""}
+                            onChange={(e) => handleChange(e, field)}>
                             <option value="" disabled>
                                 Select
                             </option>
@@ -160,7 +173,7 @@ const DynamicFormWithHandlers = ({ fields }) => {
                                             value={option.value}
                                             id={option.id}
                                             checked={formData[field.name] === option.value}
-                                            onChange={(e) => handleChange(e, field.notReqVal)}
+                                            onChange={(e) => handleChange(e, field)}
                                         />
                                         <label className="radio-label" htmlFor={option.id}>
                                             {option.label}
@@ -186,7 +199,7 @@ const DynamicFormWithHandlers = ({ fields }) => {
                             name={field.name}
                             value={formData[field.name] || ""}
                             onClick={(e) => e.target.showPicker()}
-                            onChange={handleChange}
+                            onChange={(e) => handleChange(e, field)}
                             style={{ cursor: "pointer" }}
                         />
                     </div>
@@ -200,7 +213,7 @@ const DynamicFormWithHandlers = ({ fields }) => {
                         <textarea
                             name={field.name}
                             value={formData[field.name] || ""}
-                            onChange={handleChange}
+                            onChange={(e) => handleChange(e, field)}
                             placeholder={field?.placeholder}
                         />
                     </div>
@@ -294,7 +307,7 @@ const DynamicFormWithHandlers = ({ fields }) => {
                             type={!showPassword ? "password" : "text"}
                             name={field.name}
                             value={formData[field.name] || ""}
-                            onChange={handleChange}
+                            onChange={(e) => handleChange(e, field)}
                             placeholder={field?.placeholder}
                         />
                         {!showPassword ? (
