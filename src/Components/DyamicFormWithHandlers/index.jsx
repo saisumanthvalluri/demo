@@ -16,41 +16,7 @@ const DynamicFormWithHandlers = ({ fields }) => {
         }
     }, []);
 
-    // useEffect(() => {
-    //     const savedFormData = JSON.parse(localStorage.getItem("formData"));
-    //     if (savedFormData) {
-    //         const updatedFormData = { ...savedFormData };
-    //         for (const key in savedFormData) {
-    //             const field = findFieldByName(fields, key);
-    //             if (field && field.type === "file" && savedFormData[key]) {
-    //                 updatedFormData[key] = base64ToFile(savedFormData[key], key);
-    //             }
-    //         }
-    //         setFormData(updatedFormData);
-    //     }
-    // }, []);
-
-    // const fileToBase64 = (file) => {
-    //     return new Promise((resolve, reject) => {
-    //         const reader = new FileReader();
-    //         reader.readAsDataURL(file);
-    //         reader.onload = () => resolve(reader.result);
-    //         reader.onerror = (error) => reject(error);
-    //     });
-    // };
-
-    // const base64ToFile = (base64, filename) => {
-    //     const arr = base64.split(",");
-    //     const mime = arr[0].match(/:(.*?);/)[1];
-    //     const bstr = atob(arr[1]);
-    //     let n = bstr.length;
-    //     const u8arr = new Uint8Array(n);
-    //     while (n--) {
-    //         u8arr[n] = bstr.charCodeAt(n);
-    //     }
-    //     return new File([u8arr], filename, { type: mime });
-    // };
-
+    // eslint-disable-next-line react-hooks/exhaustive-deps
     const debouncedSave = useCallback(
         debounce((data) => {
             localStorage.setItem("formData", JSON.stringify(data));

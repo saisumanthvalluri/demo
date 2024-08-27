@@ -4,13 +4,14 @@ import React, { useEffect } from "react";
 import "./index.css";
 
 const Captcha = ({ captcha, setCaptcha }) => {
-    // const [captcha, setCaptcha] = useState("");
-    // const [userInput, setUserInput] = useState("");
-    // const [isVerified, setIsVerified] = useState(false);
-
     useEffect(() => {
-        generateCaptcha();
-    }, []);
+        const characters = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
+        let captchaText = "";
+        for (let i = 0; i < 6; i++) {
+            captchaText += characters.charAt(Math.floor(Math.random() * characters.length));
+        }
+        setCaptcha((prev) => ({ ...prev, genCaptcha: captchaText, userCaptcha: "" }));
+    }, [setCaptcha]);
 
     const generateCaptcha = () => {
         const characters = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
@@ -19,22 +20,7 @@ const Captcha = ({ captcha, setCaptcha }) => {
             captchaText += characters.charAt(Math.floor(Math.random() * characters.length));
         }
         setCaptcha((prev) => ({ ...prev, genCaptcha: captchaText, userCaptcha: "" }));
-        // setIsVerified(false);
     };
-
-    // const handleInputChange = (e) => {
-    //     setUserInput(e.target.value);
-    // };
-
-    // const verifyCaptcha = () => {
-    //     if (userInput === captcha) {
-    //         setIsVerified(true);
-    //     } else {
-    //         setIsVerified(false);
-    //         generateCaptcha();
-    //         setUserInput("");
-    //     }
-    // };
 
     return (
         <div className="captcha-container">
