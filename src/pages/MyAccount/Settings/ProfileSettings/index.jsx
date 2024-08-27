@@ -1,6 +1,7 @@
 import React, { useState } from "react";
+
 import "./index.css";
-import DynamicForm from "../../../../Components/DynamicForm";
+import DynamicFormWithHandlers from "../../../../Components/DyamicFormWithHandlers";
 import { changePasswordFields, profileDetailsFields } from "../../../../Config/constants";
 import DeleteAccount from "./DeleteAccount";
 
@@ -12,14 +13,14 @@ const ProfileSettings = () => {
             case 1:
                 return (
                     <>
-                        <DynamicForm fields={profileDetailsFields} />
+                        <DynamicFormWithHandlers fields={profileDetailsFields} />
                         <button className="save-btn">Save</button>
                     </>
                 );
             case 2:
                 return (
                     <>
-                        <DynamicForm fields={changePasswordFields} />
+                        <DynamicFormWithHandlers fields={changePasswordFields} />
                         <button className="save-btn">Save</button>
                     </>
                 );

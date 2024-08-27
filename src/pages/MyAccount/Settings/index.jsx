@@ -1,12 +1,13 @@
-import React, { useState } from "react";
+// import React, { useState } from "react";
 import ProfileSettings from "./ProfileSettings";
-import DynamicForm from "../../../Components/DynamicForm";
-import { deliveryAddressFields } from "../../../Config/constants";
+// import DynamicForm from "../../../Components/DynamicForm";
+// import { deliveryAddressFields } from "../../../Config/constants";
 import { IoChevronBack } from "react-icons/io5";
 import "./index.css";
 
 const Settings = ({ back }) => {
-    const [activeTab, setActiveTab] = useState(1);
+    // const [activeTab, setActiveTab] = useState(1);
+
     return (
         <div className="settings-bg">
             {back && (
@@ -14,15 +15,15 @@ const Settings = ({ back }) => {
                     <IoChevronBack /> Back
                 </button>
             )}
-            <div className="nav-tabs">
+            {/* <div className="nav-tabs">
                 <button onClick={() => setActiveTab(1)} className={activeTab === 1 ? "active" : ""}>
                     Profile Settings
                 </button>
                 <button onClick={() => setActiveTab(2)} className={activeTab === 2 ? "active" : ""}>
                     Address
                 </button>
-            </div>
-            {activeTab === 1 ? (
+            </div> */}
+            {/* {activeTab === 1 ? (
                 <ProfileSettings />
             ) : (
                 // Address Settings
@@ -31,7 +32,8 @@ const Settings = ({ back }) => {
                     <DynamicForm fields={deliveryAddressFields} />
                     <button className="save-btn">Save</button>
                 </div>
-            )}
+            )} */}
+            <ProfileSettings />
         </div>
     );
 };

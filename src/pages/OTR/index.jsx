@@ -5,21 +5,10 @@ import DynamicHeader from "../../Components/DynamicHeader";
 import Footer from "../../Components/Footer";
 import "./index.css";
 import { OTRSteps, otrFormFields } from "../../Config/constants";
-import DynamicForm from "../../Components/DynamicForm";
-import { useForm } from "react-hook-form";
-import { zodResolver } from "@hookform/resolvers/zod";
-import { otrFormSchema } from "../../Schema/otrFieldsSchema";
+import DynamicFormWithHandlers from "../../Components/DyamicFormWithHandlers";
 
 const OTR = () => {
     const [activeStep, setActiveStep] = useState(0);
-
-    const {
-        register,
-        handleSubmit,
-        formState: { errors },
-    } = useForm({
-        resolver: zodResolver(otrFormSchema),
-    });
 
     useEffect(() => {
         // Scroll to the top of the page whenever activeStep changes
@@ -39,10 +28,6 @@ const OTR = () => {
         }, 300),
         []
     );
-
-    const onSubmit = handleSubmit((data) => {
-        console.log(data);
-    });
 
     return (
         <>
@@ -64,16 +49,13 @@ const OTR = () => {
                     </p>
                     <h4>{OTRSteps[activeStep]}</h4>
                     <hr />
-                    <form onSubmit={onSubmit}>
-                        <DynamicForm fields={otrFormFields[activeStep].fields} register={register} errors={errors} />
-                    </form>
+                    <DynamicFormWithHandlers fields={otrFormFields[activeStep].fields} />
                     <DynamicStepper
                         activeStep={activeStep}
                         setActiveStep={setActiveStep}
                         OTRSteps={OTRSteps}
                         debouncedSave={debouncedSave}
                         type="bottom"
-                        onSubmit={onSubmit}
                     />
                 </div>
 

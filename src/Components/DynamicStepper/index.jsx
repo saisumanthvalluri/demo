@@ -19,10 +19,9 @@ const DynamicStepper = ({ setActiveStep, activeStep, OTRSteps, debouncedSave, ty
             newSkipped.delete(activeStep);
         }
 
-        // setActiveStep((prevActiveStep) => prevActiveStep + 1);
-        // debouncedSave(activeStep + 1);
+        setActiveStep((prevActiveStep) => prevActiveStep + 1);
+        debouncedSave(activeStep + 1);
         setSkipped(newSkipped);
-        onSubmit()
     };
 
     const handleBack = () => {
