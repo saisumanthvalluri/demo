@@ -5,15 +5,16 @@ import debounce from "lodash.debounce";
 import DynamicOTP from "../DynamicOTP";
 import "./index.css";
 
-const DynamicFormWithHandlers = ({ fields }) => {
+const DynamicFormWithHandlers = ({ fields, setValidationErrors, validationErrors }) => {
     const [formData, setFormData] = useState({});
     const [showPassword, setShowPassword] = useState(false);
-    const [validationErrors, setValidationErrors] = useState({});
 
     useEffect(() => {
         const savedFormData = JSON.parse(localStorage.getItem("formData"));
         if (savedFormData) {
             setFormData(savedFormData);
+        } else {
+            setFormData({});
         }
     }, []);
 
@@ -53,7 +54,8 @@ const DynamicFormWithHandlers = ({ fields }) => {
 
         try {
             fieldData.schema?.parse(value);
-            setValidationErrors((prevErrors) => ({ ...prevErrors, [name]: "" }));
+            // setValidationErrors((prevErrors) => ({ ...prevErrors, [name]: "" }));
+            delete validationErrors[fieldData.name];
         } catch (error) {
             setValidationErrors((prevErrors) => ({ ...prevErrors, [name]: JSON.parse(error)[0].message }));
         }
@@ -126,6 +128,8 @@ const DynamicFormWithHandlers = ({ fields }) => {
                             value={formData[field.name] || ""}
                             onChange={(e) => handleChange(e, field)}
                             placeholder={field?.placeholder}
+                            className={validationErrors[field.name] ? "error" : ""}
+                            autoComplete="off"
                         />
 
                         {field.btn && (
@@ -155,6 +159,7 @@ const DynamicFormWithHandlers = ({ fields }) => {
                                 </option>
                             ))}
                         </select>
+                        {validationErrors[field.name] && <p className="err-msg">{validationErrors[field.name]}</p>}
                     </div>
                 );
             case "radio":
@@ -181,11 +186,11 @@ const DynamicFormWithHandlers = ({ fields }) => {
                                     </li>
                                 ))}
                             </ul>
+                            {validationErrors[field.name] && <p className="err-msg">{validationErrors[field.name]}</p>}
                         </div>
                         {field.subFields &&
                             formData[field.name] === field.reqVal &&
                             field.subFields.map((subField) => renderField(subField))}
-                        {/* {field[formData[field.name]]?.map((subField) => renderField(subField))} */}
                     </React.Fragment>
                 );
             case "date":
@@ -202,6 +207,7 @@ const DynamicFormWithHandlers = ({ fields }) => {
                             onChange={(e) => handleChange(e, field)}
                             style={{ cursor: "pointer" }}
                         />
+                        {validationErrors[field.name] && <p className="err-msg">{validationErrors[field.name]}</p>}
                     </div>
                 );
             case "textarea":
@@ -216,6 +222,7 @@ const DynamicFormWithHandlers = ({ fields }) => {
                             onChange={(e) => handleChange(e, field)}
                             placeholder={field?.placeholder}
                         />
+                        {validationErrors[field.name] && <p className="err-msg">{validationErrors[field.name]}</p>}
                     </div>
                 );
             case "line":
@@ -239,6 +246,7 @@ const DynamicFormWithHandlers = ({ fields }) => {
                             />
                             <label htmlFor={field.name}>{field.label}</label>
                         </div>
+                        {validationErrors[field.name] && <p className="err-msg">{validationErrors[field.name]}</p>}
                     </div>
                 );
             case "diclaration":
@@ -259,6 +267,7 @@ const DynamicFormWithHandlers = ({ fields }) => {
                                 {field.label} <span className="star">*</span>
                             </span>
                             <DynamicOTP />
+                            {validationErrors[field.name] && <p className="err-msg">{validationErrors[field.name]}</p>}
                         </div>
                     )
                 );
@@ -277,6 +286,7 @@ const DynamicFormWithHandlers = ({ fields }) => {
                                     ))}
                                 </ul>
                             )}
+                            {validationErrors[field.name] && <p className="err-msg">{validationErrors[field.name]}</p>}
                         </div>
                     );
                 } else if (!field.reqField) {
@@ -293,6 +303,7 @@ const DynamicFormWithHandlers = ({ fields }) => {
                                     ))}
                                 </ul>
                             )}
+                            {validationErrors[field.name] && <p className="err-msg">{validationErrors[field.name]}</p>}
                         </div>
                     );
                 }
@@ -315,6 +326,7 @@ const DynamicFormWithHandlers = ({ fields }) => {
                         ) : (
                             <VisibilityOutlinedIcon className="eye-icon" onClick={() => setShowPassword(false)} />
                         )}
+                        {validationErrors[field.name] && <p className="err-msg">{validationErrors[field.name]}</p>}
                     </div>
                 );
             default:
@@ -322,12 +334,12 @@ const DynamicFormWithHandlers = ({ fields }) => {
         }
     };
 
-    const handleSubmit = (e) => {
+    const handleFormSubmit = (e) => {
         e.preventDefault();
     };
 
     return (
-        <form className="otr-form" onSubmit={handleSubmit}>
+        <form className="otr-form-new" onSubmit={handleFormSubmit}>
             {fields.map((field) => renderField(field))}
         </form>
     );

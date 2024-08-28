@@ -20,7 +20,7 @@ const Wallet = ({ back }) => {
 				<img src="/profile/wallet/wallet-bg.svg" alt="wallet-bg" />
 				<ul className="wallet-apt">
 					{walletAPT.map((item) => (
-						<li>
+						<li key={item.id}>
 							<item.icon className="icon"></item.icon>
 							<span>{item.name}</span>
 						</li>
@@ -30,7 +30,7 @@ const Wallet = ({ back }) => {
 			<span className="sec-title">Services</span>
 			<ul className="wallet-services">
 				{walletServices.map((item) => (
-					<li>
+					<li key={item.id}>
 						<div>
 							<item.icon className="icon"></item.icon>
 						</div>

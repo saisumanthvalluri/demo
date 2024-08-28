@@ -31,7 +31,7 @@ const MyAccount = () => {
 	}, [activeSection, lgActiveSection]);
 
 	const renderMenuSection = ({ secName, items, type }) => (
-		<div className="menu-section">
+		<div className="menu-section" key={secName}>
 			<span className="sec-name">{secName}</span>
 			<ul>
 				{items.map(({ id, icon: Icon, name, amount }) => (
@@ -83,11 +83,11 @@ const MyAccount = () => {
 	};
 
 	return (
-		<>
+		<React.Fragment>
 			<DynamicHeader type="inner" />
 			<div className="my-acc-bg-mob">
 				{activeSection === null ? (
-					<>
+					<React.Fragment>
 						<div className="profil-details-box">
 							<div className="photo-box">
 								<img src="/profile/profile-photo.svg" alt="profile" />
@@ -120,7 +120,7 @@ const MyAccount = () => {
 								<CiLogout className="icon" /> Logout
 							</button>
 						</div>
-					</>
+					</React.Fragment>
 				) : (
 					// <Wallet handleBack={handleBack} />
 					renderRespectiveSection(activeSection, handleBack)
@@ -173,7 +173,7 @@ const MyAccount = () => {
 				</div>
 				<Footer />
 			</div>
-		</>
+		</React.Fragment>
 	);
 };
 

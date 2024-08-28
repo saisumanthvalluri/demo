@@ -4,17 +4,32 @@ import "./index.css";
 import DynamicFormWithHandlers from "../../../../Components/DyamicFormWithHandlers";
 import { changePasswordFields, profileDetailsFields } from "../../../../Config/constants";
 import DeleteAccount from "./DeleteAccount";
+import { getRespectiveFormData, validateFormData } from "../../../../utils/form";
 
 const ProfileSettings = () => {
     const [activeTab, setActiveTab] = useState(1);
+    const [validationErrors, setValidationErrors] = useState({});
+
+    const onSaveProfileDetails = () => {
+        const data = getRespectiveFormData(profileDetailsFields);
+        const errors = validateFormData(data, profileDetailsFields);
+        setValidationErrors((prev) => ({...prev, ...errors}))
+        // console.log(errors);
+    };
 
     const renderRespectiveSection = () => {
         switch (activeTab) {
             case 1:
                 return (
                     <>
-                        <DynamicFormWithHandlers fields={profileDetailsFields} />
-                        <button className="save-btn">Save</button>
+                        <DynamicFormWithHandlers
+                            fields={profileDetailsFields}
+                            validationErrors={validationErrors}
+                            setValidationErrors={setValidationErrors}
+                        />
+                        <button className="save-btn" onClick={onSaveProfileDetails}>
+                            Save
+                        </button>
                     </>
                 );
             case 2:

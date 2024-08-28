@@ -10,7 +10,7 @@ import { FcMoneyTransfer } from "react-icons/fc";
 import { FaMobileAlt, FaChartLine } from "react-icons/fa";
 import { AiFillInsurance } from "react-icons/ai";
 import { RiNetflixFill } from "react-icons/ri";
-import { email, nameSpaceSchema } from "../Schema/profileDetailsSchema";
+import { email, nameSpaceSchema, phoneSchema } from "../Schema/profileDetailsSchema";
 
 // ========================== Jobs page Data =============================
 export const jobTabs = [
@@ -1899,7 +1899,7 @@ export const profileDetailsFields = [
     {
         name: "name",
         label: "Name",
-        placeholder: "Name ee",
+        placeholder: "Name",
         type: "text",
         required: true,
         schema: nameSpaceSchema,
@@ -1913,22 +1913,24 @@ export const profileDetailsFields = [
         schema: email,
     },
     {
-        name: "otp",
+        name: "email_otp",
         label: "OTP",
         placeholder: "Enter OTP Via Email",
-        pattern: /^\d{6}$/,
         errorMessage: "Invalid OTP",
         required: true,
-        type: "text",
+        regex: /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/,
+        type: "otp",
+        reqVal: "email",
     },
     {
         name: "phone",
         label: "Phone",
-        placeholder: "+91-9876543210",
+        placeholder: "Ex: 9876543210",
         errorMessage: "Invalid Phone Number",
         required: true,
         type: "text",
         maxLength: 10,
+        schema: phoneSchema,
         btn: {
             text: "Send OTP",
             disabled: true,
